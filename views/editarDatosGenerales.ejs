@@ -1,0 +1,281 @@
+
+<% include partials/head %>
+
+<title>EMAPAVIGS - EDITAR UBICACIÓN</title>
+<body>
+
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Datos Generales</span></h3>
+
+
+        <div class="card-box">
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="vereda">Vereda</label>
+                            <select name="" id="vereda">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% veredas.forEach(function(vereda){ %>
+                                <% if( vereda.codigo == ficha.vereda){ %>
+                                <option selected value="<%= vereda.codigo %>"><%= vereda.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= vereda.codigo %>"><%= vereda.valor %></option>
+                                <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pista">Pista</label>
+                            <select name="" id="pista">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% pistas.forEach(function(pista){ %>
+                                <% if( pista.codigo == ficha.pista){ %>
+                                <option selected value="<%= pista.codigo %>"><%= pista.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= pista.codigo %>"><%= pista.valor %></option>
+                                <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pozo">Pozo Artesanal</label>
+                            <select name="" id="pozo">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% pozos_artesanal.forEach(function(pozo_artesanal){ %>
+                                <% if( pozo_artesanal.codigo == ficha.pozo_artesanal){ %>
+                                <option selected
+                                        value="<%= pozo_artesanal.codigo %>"><%= pozo_artesanal.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= pozo_artesanal.codigo %>"><%= pozo_artesanal.valor %></option>
+                                <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="talmacenamiento">Tipo de Almacenamiento</label>
+                            <select name="" id="talmacenamiento">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% tipos_almacenamiento.forEach(function(tipo_almacenamiento){ %>
+                                <% if( tipo_almacenamiento.codigo == ficha.tipo_almacenamiento){ %>
+                                <option selected
+                                        value="<%= tipo_almacenamiento.codigo %>"><%= tipo_almacenamiento.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= tipo_almacenamiento.codigo %>"><%= tipo_almacenamiento.valor %></option>
+                                <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pisos">N° Pisos</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.num_pisos %>"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                   title="Ingrese un número mayor a 0" required type="text"
+                                   id="pisos">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fachada">Medidas de Fachada</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.medidas_fachada %>" type="text" id="fachada">
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="horas">Frecuencia de Abastecimiento</label>
+                            <input class="form-control form-control-sm"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                   title="Ingrese un número mayor a 0" required
+                                   value="<%= ficha.frec_horas_abastecimiento %>"
+                                   type="text" id="horas">
+                            <small class="form-text text-muted">Horas</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="dias">&#160;</label>
+                            <input class="form-control form-control-sm"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                   required value="<%= ficha.frec_dias_abastecimiento %>"
+                                   type="text" id="dias">
+                            <small class="form-text text-muted">Dias</small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="presion">Presion de Agua</label>
+                            <input class="form-control form-control-sm"
+                                   value="<%= ficha.presion_agua %>"
+                                   type="text"
+                                   id="presion">
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fila">Fila Ubicación de la conexión</label>
+                            <input class="form-control form-control-sm"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                   title="Ingrese un número mayor a 0" required
+                                   value="<%= ficha.ubicacion_conexion_fila %>"
+                                   type="text"
+                                   id="fila">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="columna">Columna Ubicación de la conexión</label>
+                            <input class="form-control form-control-sm"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                   title="Ingrese un número mayor a 0" required
+                                   value="<%= ficha.ubicacion_conexion_columna %>"
+                                   type="text"
+                                   id="columna">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="encuestador">Encuestador</label>
+                            <select name="" id="encuestador" disabled>
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% encuestadores.forEach(function(encuestador){ %>
+                                <% if( encuestador.codigo == ficha.codencuestador){ %>
+                                <option selected value="<%= encuestador.codigo %>"><%= encuestador.codigo %></option>
+                                <% } else{ %>
+                                <option value="<%= encuestador.codigo %>"><%= encuestador.codigo %></option>
+                                <% } %>
+                                <% }) %>
+                            </select>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="observaciones">Observaciones</label>
+                            <textarea class="form-control" style="resize: none" id="observaciones"><%= ficha.observaciones %></textarea>
+                        </div>
+
+                    </div>
+
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+
+                    </div>
+                    <% } %>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $('#btn-guardar').on('click', function (e) {
+        e.preventDefault();
+
+         var pisos=parseFloat($('#pisos').val());
+            if (isNaN(pisos)){
+                alert('Número de pisos no válido.Ingrese un valor entero.');
+                return;
+            }
+            var horas=parseFloat($('#horas').val());
+            if (isNaN(horas)){
+                alert('Frecuencia de horas de abastecimiento no válido.Ingrese un valor entero.');
+                return;
+            }
+            var dias=parseFloat($('#dias').val());
+            if (isNaN(dias)){
+                alert('Frecuencia de días de abastecimiento no válido.Ingrese un valor entero.');
+                return;
+            }
+            var fila=parseFloat($('#fila').val());
+            if (isNaN(fila)){
+                alert('Número de fila de ubicación de la conexión no válido.Ingrese un valor entero.');
+                return;
+            }
+            var columna=parseFloat($('#columna').val());
+            if (isNaN(columna)){
+                alert('Número de columna de ubicación de la conexión no válido.Ingrese un valor entero.');
+                return;
+            }
+            
+        $.post('/guardar-datos-generales/<%= ficha.id %>', {
+            vereda: $('#vereda').val(),
+            pista: $('#pista').val(),
+            pozo_artesanal: $('#pozo').val(),
+            tipo_almacenamiento: $('#talmacenamiento').val(),
+            num_pisos: $('#pisos').val(),
+            frec_horas_abastecimiento: $('#horas').val(),
+            frec_dias_abastecimiento: $('#dias').val(),
+            medidas_fachada: $('#fachada').val(),
+            presion_agua: $('#presion').val(),
+            observaciones: $('#observaciones').val(),
+            ubicacion_conexion_fila: $('#fila').val(),
+            ubicacion_conexion_columna: $('#columna').val(),
+            codencuestador: $('#encuestador').val(),
+            beforeSend: function () {
+                $("#btn-guardar").attr("disabled", "disabled");
+                $("#btn-guardar").val("Guardando...");
+            }
+        })
+            .done(function (data) {
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Guardando..."
+                }).show();
+                window.location.href = "/editar-datos-generales/" +<%= ficha.id %>;
+            })
+            .fail(function () {
+                new Noty({
+                    type: 'alert',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Algo malo ocurrió, intentelo nuevamente"
+                }).show();
+            })
+    });
+</script>

@@ -1,0 +1,117 @@
+<% include partials/head.ejs %>
+
+<title>EMAPAVIGS - REPORTE MAPA</title>
+
+<body>
+
+<% include partials/menu-editar.ejs %>
+<div class="wrapper">
+
+    <% if( usuario.tipo.trim() == "E" ){ %>
+    <div class="container">
+
+        <h3 class="page-title">Subir Fotos</h3>
+
+
+
+        <% if (fotos.length == 3){ %>
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation"></i> Ups Ya no puedes subir mas fotos - Elimina una foto para continuar.
+        </div>
+        <% } else{ %>
+            <div class="form-box">
+
+                    <div  class="form-group">
+
+                        <div class="file-loading">
+                            <input id="foto" name="fotos" type="file" class="file"  multiple>
+                        </div>
+                        <div id="kv-error-2" style="margin-top:10px;display:none"></div>
+                        <div id="kv-success-2" class="alert alert-success" style="margin-top:10px;display:none"></div>
+
+                    </div>
+
+            </div>
+        <% } %>
+
+
+    </div>
+    <% } %>
+    <div class="container">
+        <h3 class="page-title"> Fotos subidas</h3>
+
+            <div class="row">
+                <% fotos.forEach(function(foto){ %>
+                <div class="col-md-4 foto-box d-flex justify-content-center align-items-center">
+                    <% if( usuario.tipo.trim() == "E" ){ %>
+                        <i onclick="deleteFoto(<%= foto.id %>)" class="fas fa-trash"></i>
+                    <% } %>
+                    <img  src="<%= foto.url %>" alt="">
+                </div>
+                <% }) %>
+
+            </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<% include partials/footer %>
+
+
+<script type="text/javascript" src="../js/sortable.js"></script>
+<script type="text/javascript" src="../js/fileinput.min.js"></script>
+<script type="text/javascript" src="../js/theme.min.js"></script>
+<script type="text/javascript" src="../js/fa/theme.min.js"></script>
+
+<script>
+
+
+    var fotos = '<%= fotos.length %>';
+
+    var count = 3 - Number(fotos);
+
+    if ( count == 0){
+        var show = false;
+    }else{
+        show = true;
+
+    }
+
+
+    $("#foto").fileinput({
+        uploadUrl: "/subir-fotos/<%=ficha.id%>",
+        allowedFileExtensions: ['jpg', 'png'],
+        uploadAsync: false,
+        showUpload: show, // hide upload button
+        showRemove: false, // hide remove button
+        minFileCount: 1,
+        maxFileCount: count,
+        elErrorContainer: '#kv-error-2'
+    }).on('filebatchuploadsuccess', function() {
+        location.reload();
+    });
+
+
+    function deleteFoto($id) {
+        if (confirm('Are you sure you want to delete this?')) {
+            $.ajax({
+                method: "POST",
+                url: "/eliminar-foto/"+$id
+            })
+                .done(function( msg ) {
+                    location.reload();
+                });
+        }
+
+    }
+
+
+</script>

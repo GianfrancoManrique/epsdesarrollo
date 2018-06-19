@@ -1,0 +1,207 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - EDITAR CLASIFICACIÓN</title>
+<body>
+<% include partials/menu-editar.ejs %>
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Clasificación</span></h3>
+
+
+        <div class="card-box">
+            <form action="">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="rdistribucion">Ruta Distribución</label>
+                            <input class="form-control form-control-sm" disabled  value="<%= ficha.ruta_distribucion %>"
+                                   type="text"
+                                   id="rdistribucion">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="secuencia">Secuencia</label>
+                            <input class="form-control form-control-sm" disabled value="<%= ficha.secuencia %>" type="text"
+                                   id="secuencia">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tconstruccion">Tipo Construcción</label>
+                            <select name="" id="tconstruccion">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% tipos_construccion.forEach(function(tipo_construccion){ %>
+
+                                <% if( tipo_construccion.codigo == ficha.tipo_construccion){ %>
+                                <option selected
+                                        value="<%= tipo_construccion.codigo %>"><%= tipo_construccion.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= tipo_construccion.codigo %>"><%= tipo_construccion.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="econstruccion">Est. Construcción</label>
+                            <select name="" id="econstruccion">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% estados_construccion.forEach(function(estado_construccion){ %>
+
+                                <% if( estado_construccion.codigo == ficha.estado_construccion){ %>
+                                <option selected  value="<%= estado_construccion.codigo %>"><%= estado_construccion.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= estado_construccion.codigo %>"><%= estado_construccion.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="gcaracteristico">Grupo Característico</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.grupo_caracteristico %>"
+                                   type="text" id="gcaracteristico">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="cgu">Código CIIU</label>
+                            <select name="" id="cgu">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% ciius.forEach(function(ciiu){ %>
+                                <% if( ciiu.codigo == ficha.ciiu){ %>
+                                <option selected value="<%= ciiu.codigo %>"><%= ciiu.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= ciiu.codigo %>"><%= ciiu.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="qhabita">Quien habita</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.quien_habita %>" type="text"
+                                   id="qhabita">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="familia">Nº Familia</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.num_familias %>" type="text"
+                                   id="familia">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="nhabita">Nº Habit</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.num_habitantes %>" type="text"
+                                   id="nhabita">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="ccatastral">Código Catastral</label>
+                            <input class="form-control form-control-sm"  type="text" id="ccatastral" disabled
+                                   value="1103<%= ficha.distrito %> <%= ficha.sector %> <%= ficha.manzana %> <%= ficha.lote %> <%= ficha.conexion %>">
+                        </div>
+
+                    </div>
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+
+                    </div>
+                    <% } %>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $('#btn-guardar').on('click', function (e) {
+
+            e.preventDefault();
+
+            var familia=parseInt($('#familia').val());
+
+            if (isNaN(familia)){
+                alert('Número de familia no válido.Ingrese un valor entero.');
+                return;
+            }
+
+            var nhabita=parseInt($('#nhabita').val());
+            
+            if (isNaN(nhabita)){
+                alert('Número de habitantes no válido.Ingrese un valor entero.');
+                return;
+            }
+
+            $.post('/guardar-clasificacion/<%= ficha.id %>', {
+                ruta_distribucion: $('#rdistribucion').val(),
+                secuencia: $('#secuencia').val(),
+                tipo_construccion: $('#tconstruccion').val(),
+                estado_construccion: $('#econstruccion').val(),
+                grupo_caracteristico: $('#gcaracteristico').val(),
+                ciiu: $('#cgu').val(),
+                quien_habita: $('#qhabita').val(),
+                num_familias: $('#familia').val(),
+                num_habitantes: $('#nhabita').val(),
+
+
+                beforeSend: function () {
+                    $("#btn-guardar").attr("disabled", "disabled");
+                    $("#btn-guardar").val("Guardando...");
+                }
+            })
+
+                .done(function (data) {
+
+                    new Noty({
+                        type: 'success',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Guardando..."
+
+                    }).show();
+
+                    window.location.href = "/editar-clasificacion/" +<%= ficha.id %>;
+
+                })
+                .fail(function () {
+                    new Noty({
+                        type: 'alert',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Algo malo ocurrió, intentelo nuevamente"
+
+                    }).show();
+                })
+
+    });
+</script>

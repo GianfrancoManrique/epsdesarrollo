@@ -1,0 +1,166 @@
+<% include partials/head %>
+<title>EMAPAVIGS - EDITAR UBICACIÓN</title>
+<body>
+
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Ubicación</span></h3>
+
+
+        <div class="card-box">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tvia">Tipo de Vía</label>
+                        <select  name="" id="tvia">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_via.forEach(function(tipo_via){ %>
+
+                            <% if( tipo_via.codigo == ficha.tipo_via){ %>
+                            <option selected value="<%= tipo_via.codigo %>"><%= tipo_via.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= tipo_via.codigo %>"><%= tipo_via.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nvia">Nombre de vía</label>
+                        <input class="form-control form-control-sm"  value="<%= ficha.nombre_via %>" type="text" id="nvia">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nmunicipal">Nº Municipal</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.num_municipal %>" type="text" id="nmunicipal">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tel">Teléfono</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.telefono %>" type="text" id="tel">
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="est">Estado</label>
+                        <select name="" id="est">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% estados_servicio.forEach(function(estado_servicio){ %>
+
+                            <% if( estado_servicio.valor == ficha.estado_servicio){ %>
+                            <option selected value="<%= estado_servicio.codigo %>"><%= estado_servicio.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= estado_servicio.codigo %>"><%= estado_servicio.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 radios">
+                    <div class="form-group">
+                        <label for="tservicio">Tipo de Servicio</label>
+                        <select name="" id="tservicio">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_servicio.forEach(function(tipo_servicio){ %>
+                                <% if( tipo_servicio.codigo == ficha.tipo_servicio){ %>
+                                     <option selected value="<%= tipo_servicio.codigo %>"><%= tipo_servicio.valor %></option>
+                                <% } else{ %>
+                                     <option value="<%= tipo_servicio.codigo %>"><%= tipo_servicio.valor %></option>
+                                <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="est">Referencias</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.referencias %>" type="text" id="ref">
+                    </div>
+                </div>
+                <% if(usuario.tipo.trim()=='E'){ %>
+                <div class="col-md-12">
+                    <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                </div>
+                <% } %>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $('#btn-guardar').on('click', function (e) {
+
+        e.preventDefault();
+
+        $.post('/guardar-ubicacion/<%= ficha.id %>', {
+            tipo_via: $('#tvia').val(),
+            nombre_via: $('#nvia').val(),
+            telefono: $('#tel').val(),
+            estado_servicio: $('#est').val(),
+            tipo_servicio: $('#tservicio').val(),
+            referencias: $('#ref').val(),
+            num_municipal: $('#nmunicipal').val(),
+
+
+            beforeSend: function () {
+                $("#btn-guardar").attr("disabled", "disabled");
+                $("#btn-guardar").val("Guardando...");
+            }
+        })
+
+            .done(function (data) {
+
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Guardando..."
+
+                }).show();
+
+                window.location.href = "/editar-ubicacion/" +<%= ficha.id %>;
+
+            })
+            .fail(function () {
+                new Noty({
+                    type: 'alert',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Algo malo ocurrió, intentelo nuevamente"
+
+                }).show();
+            })
+
+    });
+</script>
+

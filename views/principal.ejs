@@ -1,0 +1,54 @@
+<% include partials/head %>
+<title>EMAPAVIGS - Principal</title>
+<body class="login">
+
+
+<div class="container d-flex flex-column justify-content-center align-items-center form-content">
+    <h1 class="welcome-msg animated fadeIn ">Bienvenido, <span><%= nombres %></span></h1>
+
+    <div class="items-prin d-flex flex-md-row flex-column justify-content-center flex-wrap animated bounceInUp">
+
+        <% if(tipo.trim()=='E'){ %>
+            <a class="item-prin d-flex flex-column justify-content-center " href="/crear-identificacion"><i
+                        class="fas fa-plus"></i> nueva ficha</a>
+
+            <a class="item-prin d-flex flex-column justify-content-center " href="/explorar"><i
+                class="fas fa-search"></i> explorar</a>
+
+        <% } %>
+
+        <% if(tipo.trim()=='S'){%>
+            <a class="item-prin d-flex flex-column justify-content-center " href="/reporte-avance-mapa"><i
+                class="fas fa-thumbtack"></i> Reporte por Mapa</a>
+            
+            <a class="item-prin d-flex flex-column justify-content-center " href="/reporte-resumen-final"><i
+                class="fas fa-chart-line"></i> Reporte Resumen Final</a>
+    
+            <a class="item-prin d-flex flex-column justify-content-center " href="/reporte-resumen-encuestador"><i
+                class="fas fa-chart-line"></i> Reporte Resumen por Encuestador</a>
+            
+        <% } %>
+    </div>
+
+    <a class="item-before d-flex flex-column justify-content-center " href="/principal"><i
+        class="fas fa-arrow-left"></i> </a>
+
+    <div class="logout-prin">
+
+        <a class="item-logout d-flex flex-column justify-content-center " href="/logout"><i
+                    class="fas fa-power-off"></i> </a>
+    </div>
+
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+

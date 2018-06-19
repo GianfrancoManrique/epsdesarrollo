@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" >
+    <!-- Google Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/print.css">
+    <title>Ficha-<%= fichaImpresion.ficha_numero %></title>
+    <style>
+        .acceso{
+            text-align: center;
+            padding: 20px;
+        }
+        .acceso a{
+            display: inline-block;
+            margin-top: 20px;
+            border: solid 2px #b4b4b4;
+            border-radius: 10px;
+            padding: 15px;
+            color: #b4b4b4;
+        }
+    </style>
+</head>
+<body>
+<% if( usuario.tipo.trim() == "S" ){ %>
+<div class="imprimir">
+    Imprimir ficha
+</div>
+
+<div class="container" >
+    <div class="top d-flex justify-content-between align-items-center">
+        <img src="../img/logo-emapa-final-color.png" style="height: 50px" alt="">
+        <h1>FICHA DE DATOS CATASTRALES</h1>
+        <div class="form-group">
+            <label for="">Ficha N°</label>
+            <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.ficha_numero %>">
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Sucursal</label>
+                    <input type="text" disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.sucursal %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Estado Conexión</label>
+                    <input type="text"disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.estado_de_conexion %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Suministro</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.suministro %>">
+                </div>
+            </div>
+        </div>
+
+        <h2 >1.- Identificación</h2>
+
+        <div class="row">
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.dept %>">
+                    <small class="form-text text-muted">Dept.</small>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.prov %>">
+                    <small class="form-text text-muted">Prov.</small>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.dist %>">
+                    <small class="form-text text-muted">Dist.</small>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sect %>">
+                    <small class="form-text text-muted">Sect.</small>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.manzana %>">
+                    <small class="form-text text-muted">Manzana</small>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.lote %>">
+                    <small class="form-text text-muted">Lote</small>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.conex %>">
+                    <small class="form-text text-muted">Conex.</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Ciclo de Facturación</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.ciclo_de_facturacion %>">
+                    <small class="form-text text-muted">&#160;</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Área de operaciones</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sector %>">
+                    <small class="form-text text-muted">Sector</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sub_sector %>">
+                    <small class="form-text text-muted">Sub-sector</small>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin: 10px 0">2.- Responsable</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Apellido Paterno del Propietario</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.apellido_paterno_del_propietario %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Apellido Materno del Propietario</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.apellido_materno_del_propietario %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Nombre del Propietario</label>
+                    <input type="text"disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.nombres_del_propietario %>">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Apellido Paterno del Responzable</label>
+                    <input type="text"disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.apellido_paterno_del_responsable %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Apellido Materno del Responzable</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.apellido_materno_del_responsable %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Nombre del Responzable</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.nombres_del_responsable %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Tipo de Documento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_doc %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Número de Documento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.numero %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">3.- Ubicación Geográfica</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">País</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.pais %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Departamento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.departamento %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Provincia</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.provincia %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Dist./Centro Pob.</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.distrito_centro_poblado %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Zona</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.distrito_centro_poblado %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Tipo de Habilitación</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_habilitacion %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Nombre de Habilitación</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.nombre_de_habilitacion %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Comuna</label>
+                    <input type="text"disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.comuna %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Sector</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sector_ubica %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Manzana</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.manzana_ubica %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Lote</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.lote_ubica %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Sub-Lote</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sublote %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Tipo de Población</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_poblacion %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Geocódigo</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.geocodigo %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Coordenada X</label>
+                    <input type="text"disabled readonly  class="form-control form-control-sm " value="<%= fichaImpresion.coordenada_x %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Coordenada Y</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.coordenada_y %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Coordenada Z</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.coordenada_z %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">4.- Ubicación</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Tipo de Vía</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_via %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Nombre de la vía</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.nombre_de_via %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">N° Municipal</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.n_municipal %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.telefono %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de Servicio</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_servicio %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Referencias</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.referencias %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">5.- Clasificación</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Ruta de Distribución</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.ruta_de_distribucion %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Secuencia</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.secuencia %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de Construcción</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_construccion %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado de Construcción</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_de_construccion %>">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="">Código CIIU</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.codigo_ciiu %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Quien Habita</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.quien_habita %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">N° Familia</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.n_de_familias %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">N° de Habitantes</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.n_habitantes %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Código Catastral</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.codigo_catastral %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Grupo Característico</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.grupo_caracteristicos %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0" id="agua">6.- Agua</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_agua %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Categoría</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.categoria_agua %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de Cobranza/Medición</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_cobranza_medicion %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Macrosector</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.macrosector_agua %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Sector</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sector_agua %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Multiusuario</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.multiusuario %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Cant. de Predios</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.cantidad_de_predios %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Caja de Registro</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.caja_de_registro %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado de Caja</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_de_caja %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Acometida (Tuberia)</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.acometida_tuberia %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Diametro Acometida</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.diametro_acometida %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tapa</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tapa %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de consumidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_de_consumidor %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Pavimento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.pavimento %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Localización de Conexión</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.localizacion_de_conexion %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Ubicación en MTS.</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.ubicacion_mts %> mts.">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Fugas</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.fugas %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Estado de Tapa</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_tapa %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0"> Unidades de uso</h2>
+        <div class="row">
+            <table style="text-align: center" class="table table-striped table-bordered table-sm">
+                <thead  class="bg-primary" style="color: #fff; ">
+                <tr style="border-radius: 10px">
+                    <th>RESPO</th>
+                    <th>TIPO DE USO</th>
+                    <th>CATEGORIA</th>
+                    <th>TARIFA</th>
+                    <th>COMPLEMENTO</th>
+                </tr>
+                </thead>
+                <tbody >
+                <% unidadesUsoImpresion.forEach(function(uso){ %>
+                    <tr>
+                        <td><%= uso.responsable %></td>
+                        <td><%= uso.tipo_uso %></td>
+                        <td><%= uso.categoria %></td>
+                        <td><%= uso.tarifa %></td>
+                        <td><%= uso.complemento %></td>
+                    </tr>
+                <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+        <h2 style="margin: 10px 0">7.- Desague</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Categoría</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.categoria_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Macrosector</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.macrosector_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Sector</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.sector_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Red de Distribución</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.red_distribucion_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo Material Tubería</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_material_tuberia %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Diametro de Tubo</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.diametro_tubo %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de Caja</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_caja_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Estado de Caja</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_caja_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Localización de Caja</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.localizacion_caja_desague %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Obstruido</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.obstruido %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Ubicación Mts.</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.ubicacion_mts_desague %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">8.- Datos del Medidor</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Marca Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.marca_medidor %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Número Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.num_medidor %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Lectura</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.lectura %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Diametro</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.diametro_medidor %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Estado del Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.estado_medidor %>">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Posición del Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.posicion_medidor %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo del Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_medidor %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Válvulas</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.valvulas %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Seguridad del Medidor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.seguridad_medidor %>">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">9.- Datos Generales</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Vereda</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.vereda %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Pista</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.pista %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Pozo Artesanal</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.pozo_artesanal %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Tipo de Almacenamiento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.tipo_almacenamiento %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">N° Pisos</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.num_pisos %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Medidas de Fachada</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.medidas_fachada %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Presión de Agua</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.presion_agua %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Frecuencia de Abastecimiento</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.frec_horas_abastecimiento %>">
+                    <small class="form-text text-muted">Horas</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">&#160;</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.frec_dias_abastecimiento %>">
+                    <small class="form-text text-muted">Días</small>
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">10.- Observaciones</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea name="" id="" disabled readonly style="resize: none" rows="5" class="form-control form-control-sm"><%= fichaImpresion.observaciones %></textarea>
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 10px 0">11.- Encuestador</h2>
+        <div class="row"  id="encues">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Encuestador</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.encuestador %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Fecha encuestador</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.fecha_encuestador %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Supervisor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.supervisor %>">
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Fecha Supervisor</label>
+                    <input type="text" disabled readonly class="form-control form-control-sm " value="<%= fichaImpresion.fecha_supervisor %>">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<% } else {%>
+<div class="acceso">
+    <h1 >Acceso no autorizado</h1>
+    <a href="/editar-identificacion/<%= fichaImpresion.ficha_numero %>">regresar</a>
+</div>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+
+    $('.form-control').attr('disabled','disabled');
+
+    $(".imprimir").click(function () {
+       window.print();
+    });
+</script>
+</body>
+
+
+</html>

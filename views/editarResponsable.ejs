@@ -1,0 +1,252 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - EDITAR RESPONSABLE</title>
+<body>
+
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Responsable</span></h3>
+
+
+        <div class="card-box">
+            <form id="responsable">
+                <div class="row">
+                    <% if( ficha_responsables.length > 0){ %>
+
+
+                        <% ficha_responsables.forEach(function(ficha_responsable){ %>
+
+                            <% if( ficha_responsable.tipo_resp == "P"){ %>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pater">Apellido Paterno del Propietario</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.apellido_pat %>"
+                                               type="text" id="pater">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="mater"> Apellido Materno del Propietario</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.apellido_mat %>"
+                                               type="text" id="mater">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nompro"> Nombres del Propietario</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.nombres %>"
+                                               type="text" id="nompro">
+                                    </div>
+                                </div>
+
+                            <% } else if (ficha_responsable.tipo_resp == "R") { %>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pateres">Apellido Paterno del Responsable</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.apellido_pat %>"
+                                               type="text" id="pateres">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="materes"> Apellido Materno del Responsable</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.apellido_mat %>"
+                                               type="text" id="materes">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nomres"> Nombres del Responsable</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.nombres %>"
+                                               type="text" id="nomres">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="docum">Tipo de Documento</label>
+                                        <select name="" id="docum">
+                                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                            <% tipos_documento.forEach(function(tipo_documento){ %>
+
+                                            <% if( tipo_documento.codigo == ficha_responsable.tipo_doc){ %>
+                                            <option selected
+                                                    value="<%= tipo_documento.codigo %>"><%= tipo_documento.valor %></option>
+                                            <% } else{ %>
+                                            <option value="<%= tipo_documento.codigo %>"><%= tipo_documento.valor %></option>
+                                            <% } %>
+
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="dnipro"> Número</label>
+                                        <input class="form-control form-control-sm" value="<%= ficha_responsable.num_doc %>"
+                                               type="text" id="dnipro">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            <%  } %>
+
+                        <% }) %>
+
+                    <% } else { %>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pater">Apellido Paterno del Propietario</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="pater">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="mater"> Apellido Materno del Propietario</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="mater">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nompro"> Nombres del Propietario</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="nompro">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pateres">Apellido Paterno del Responsable</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="pateres">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="materes"> Apellido Materno del Responsable</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="materes">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="nomres"> Nombres del Responsable</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="nomres">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="docum">Tipo de Documento</label>
+                                    <select name="" id="docum">
+                                        <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                        <% tipos_documento.forEach(function(tipo_documento){ %>
+
+                                        <% if( tipo_documento.codigo == ficha.tipo_doc){ %>
+                                        <option selected value="<%= tipo_documento.codigo %>"><%= tipo_documento.valor %></option>
+                                        <% } else{ %>
+
+                                        <option value="<%= tipo_documento.codigo %>"><%= tipo_documento.valor %></option>
+                                        <% } %>
+
+
+
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="dnipro"> Número</label>
+                                    <input class="form-control form-control-sm" value=""
+                                           type="text" id="dnipro">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                    <%  } %>
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                    </div>
+                    <% } %>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+
+    $(function () {
+        $('#btn-guardar').on('click', function (e) {
+
+            e.preventDefault();
+
+            $.post('/guardar-responsable/<%= ficha.id %>', {
+                apellido_pat_prop: $('#pater').val(),
+                apellido_mat_prop: $('#mater').val(),
+                tipo_doc: $('#docum').val(),
+                num_doc: $('#dnipro').val(),
+                nombres_resp: $('#nomres').val(),
+                apellido_pat_resp: $('#pateres').val(),
+                apellido_mat_resp: $('#materes').val(),
+                nombres_prop: $('#nompro').val(),
+
+                beforeSend: function () {
+                    $("#btn-guardar").attr("disabled", "disabled");
+                    $("#btn-guardar").val("Guardando...");
+                }
+            })
+
+                .done(function (data) {
+
+                    new Noty({
+                        type: 'success',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Guardando..."
+
+                    }).show();
+
+                    window.location.href = "/editar-responsable/" +<%= ficha.id %>;
+
+                })
+                .fail(function () {
+                    new Noty({
+                        type: 'alert',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Algo malo ocurrió, intentelo nuevamente"
+
+                    }).show();
+                })
+
+        });
+    });
+
+
+</script>
+

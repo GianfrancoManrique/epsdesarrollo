@@ -1,0 +1,392 @@
+<% include partials/head %>
+<title>EMAPAVIGS - EDITAR UBICACIÓN GEOGRÁFICA</title>
+<body>
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Ubicación Geográfica</span></h3>
+
+
+        <div class="card-box">
+            <div class="row">
+                
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="pais">País</label>
+                        <input class="form-control form-control-sm" disabled type="text" id="pais" value="<%= pais.valor %>">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="departamento">Departamento</label>
+                        <input class="form-control form-control-sm" disabled type="text" id="departamento"
+                               value="<%= departamento.valor %>">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="provincia">Provincia</label>
+                        <input class="form-control form-control-sm" disabled type="text" id="provincia"
+                               value="<%= provincia.valor %>">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="distrito">Distrito / Centro Poblado</label>
+                        <select  name="" disabled id="distrito">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% distritos.forEach(function(distrito){ %>
+                                <% if( distrito.codigo == ficha.distrito){ %>
+                                    <option selected value="<%= distrito.codigo %>"><%=  distrito.valor %></option>
+                                <% } else{ %>
+                                     <option value="<%= distrito.codigo %>"><%= distrito.valor %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="zona">Zona</label>
+                        <input type="text" style="text-transform: capitalize;" id="zona" class="form-control form-control-sm" disabled value="<%= ficha.sucursal %>">
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="hab">Tipo de Habilitacion</label>
+                        <select name="" id="hab">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_habilitacion.forEach(function(tipo_habilitacion){ %>
+
+                            <% if( tipo_habilitacion.codigo == ficha.tipo_habilitacion){ %>
+                                <option selected value="<%= tipo_habilitacion.codigo %>"><%= tipo_habilitacion.valor %></option>
+                            <% } else{ %>
+
+                                <option value="<%= tipo_habilitacion.codigo %>"><%= tipo_habilitacion.valor %></option>
+                            <% } %>
+
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="hab">Nombre de Habilitación</label>
+                        
+                        <select name="" id="nomhab">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% nombres_habilitacion.forEach(function(nombre_habilitacion){ %>
+
+                            <% if( nombre_habilitacion.codigo == ficha.nombre_habilitacion){ %>
+                                <option selected value="<%= nombre_habilitacion.codigo %>"><%= nombre_habilitacion.valor %></option>
+                            <% } else{ %>
+
+                                <option value="<%= nombre_habilitacion.codigo %>"><%= nombre_habilitacion.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="comuna">Comuna</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.comuna %>" type="text" id="comuna" disabled>
+                    </div>
+                </div>
+
+                <!-- Tercera Fila --->
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sector">Sector</label>
+                        <input class="form-control form-control-sm" disabled value="<%= ficha.sector %>" type="text" id="sector">
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="mza">Manzana</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.manzana_mun %>" type="text" id="mza">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="lote">Lote</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.lote_mun %>"  type="text" id="lote">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="sublote">Sub Lote</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.sublote_mun %>" type="text" id="sublote">
+                    </div>
+                </div>
+
+                <!-- Cuarta Fila --->
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tpoblacion">Tipo de Población</label>
+                        <select name="" id="tipo_pob">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% if( ficha.tipo_poblacion == "URBANA"){ %>
+                                 <option selected value="URBANA">URBANA</option>
+                                 <option value="RURAL">RURAL</option>
+                            <% } else{ %>
+                                <option value="URBANA">URBANA</option>
+                                <option selected value="RURAL">RURAL</option>
+                            <% } %>
+
+
+
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="geocodigo">Geocódigo</label>
+                        <input class="form-control form-control-sm" disabled value="<%= ficha.geocodigo %>" type="text" id="geocodigo">
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+
+                    <!--<iframe
+                            width="450"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCO-8VTxUq72o3wTR-4gHfPdVu_SnDP8rk&q=record+stores+in+Seattle" allowfullscreen>
+                    </iframe>-->
+
+                    <div id="map"></div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="corx">Coordenada X</label>
+                        <input class="form-control form-control-sm" disabled value="<%= ficha.coordenada_x %>" type="text" id="corx">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="cory">Coordenada Y</label>
+                        <input class="form-control form-control-sm" disabled value="<%=  ficha.coordenada_y %>" type="text" id="cory">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="corz">Coordenada Z</label>
+                        <input class="form-control form-control-sm" disabled value="<%=  ficha.coordenada_z %>" type="text" id="corz">
+                    </div>
+
+
+                </div>
+                <% if(usuario.tipo.trim()=='E'){ %>
+                <div class="col-md-12">
+                    <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                </div>
+                <% } %>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <% include partials/footer %>
+
+
+    <script>
+
+        if( $("#zona").val() == 01){
+            $("#zona").val("Nasca");
+        }else{
+            $("#zona").val("Vista Alegre");
+        }
+
+
+        function initMap() {
+
+            <% if( !ficha.coordenada_x){ %>
+                var posi = {lat: -14.827722, lng: -74.937065};
+            <% } else{ %>
+                var posi = {lat: <%= ficha.coordenada_x%>, lng: <%= ficha.coordenada_y%>}
+            <% } %>
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: posi
+            });
+
+            <% if( ficha.coordenada_x){ %>
+                var marker = new google.maps.Marker({
+                    position:  posi,
+                    map: map,
+                    draggable: true
+                });
+            <% } else{ %>
+                var marker = new google.maps.Marker({
+                    position:  posi,
+                    map: map,
+                    draggable: true
+                });
+            <% }%>
+
+
+
+            <% if( !ficha.coordenada_x){ %>
+
+                 if (navigator.geolocation) {
+                     navigator.geolocation.getCurrentPosition(function (position) {
+                         var pos = {
+                             lat: position.coords.latitude,
+                             lng: position.coords.longitude
+                         };
+
+                         var marker = new google.maps.Marker({
+                             position: pos,
+                             map: map,
+                             draggable: true
+                         });
+
+                         map.setCenter(pos);
+                         $("#corx").val(position.coords.latitude);
+                         $("#cory").val(position.coords.longitude);
+
+                         google.maps.event.addListener(marker, 'dragend', function (event) {
+                             document.getElementById("corx").value = this.getPosition().lat();
+                             document.getElementById("cory").value = this.getPosition().lng();
+
+                             /*document.getElementById("geocodigo").value = this.getPosition().lat().toString() + "," + this.getPosition().lng().toString();*/
+
+                             displayLocationElevation(event.latLng, elevator);
+
+                         });
+                         var elevator = new google.maps.ElevationService;
+
+                         function displayLocationElevation(location, elevator) {
+                             // Initiate the location request
+                             elevator.getElevationForLocations({
+                                 'locations': [location]
+                             }, function(results, status) {
+
+                                 if (status === 'OK') {
+                                     // Retrieve the first result
+                                     if (results[0]) {
+                                         document.getElementById("corz").value = results[0].elevation;
+                                     }
+                                 }
+                             });
+                         }
+                     });
+
+                 } else {
+                     // Browser doesn't support Geolocation
+                     handleLocationError(false, infoWindow, map.getCenter());
+                 }
+            <% }%>
+
+
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                document.getElementById("corx").value = this.getPosition().lat();
+                document.getElementById("cory").value = this.getPosition().lng();
+
+                document.getElementById("geocodigo").value = this.getPosition().lat().toString() + "," + this.getPosition().lng().toString();
+
+                displayLocationElevation(event.latLng, elevator);
+
+            });
+            var elevator = new google.maps.ElevationService;
+
+            function displayLocationElevation(location, elevator) {
+                // Initiate the location request
+                elevator.getElevationForLocations({
+                    'locations': [location]
+                }, function(results, status) {
+
+                    if (status === 'OK') {
+                        // Retrieve the first result
+                        if (results[0]) {
+                            document.getElementById("corz").value = results[0].elevation;
+                        }
+                    }
+                });
+            }
+
+
+        }
+
+        $('#btn-guardar').on('click', function (e) {
+
+            e.preventDefault();
+
+            $.post('/guardar-ubica-geografica/<%= ficha.id %>', {
+                tipo_habilitacion: $('#hab').val(),
+                nombre_habilitacion: $('#nomhab').val(),
+                comuna: $('#comuna').val(),
+                manzana_mun: $('#mza').val(),
+                lote_mun: $('#lote').val(),
+                sublote_mun: $('#sublote').val(),
+                tipo_poblacion: $('#tipo_pob').val(),
+                geocodigo: $('#geocodigo').val(),
+                coordenada_x: $('#corx').val(),
+                coordenada_y: $('#cory').val(),
+                coordenada_z: $('#corz').val(),
+
+                beforeSend: function () {
+                    $("#btn-guardar").attr("disabled", "disabled");
+                    $("#btn-guardar").val("Guardando...");
+                }
+            })
+
+                .done(function (data) {
+
+                    new Noty({
+                        type: 'success',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Guardando..."
+
+                    }).show();
+
+                    window.location.href = "/editar-ubica-geografica/" +<%= ficha.id %>;
+
+                })
+                .fail(function () {
+                    new Noty({
+                        type: 'alert',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Algo malo ocurrió, intentelo nuevamente"
+
+                    }).show();
+                })
+
+        });
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEYJxlaBDwhCWPr_vQxkTRWx70w79P-tk&callback=initMap"
+            async defer></script>

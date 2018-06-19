@@ -1,0 +1,53 @@
+
+<% include partials/head %>
+<title>EMAPAVIGS - LOGIN</title>
+<body class="login">
+<div class="container d-flex justify-content-around align-items-center form-content">
+    <div class="col-lg-4 col-sm-6 logo-principal ">
+        <h1 class="animated bounceInLeft">
+            <img src="img/logo-emapa-final-white.svg" height="112px" alt="EMAPAVIGS - CATASTRAL SYSTEM">
+        </h1>
+    </div>
+    <div class="col-lg-1 col-md-1 line-login animated fadeIn">
+        <div></div>
+    </div>
+    <div class="col-lg-4">
+
+        <form class="d-flex flex-column align-self-center justify-content-center animated bounceInRight" action="/loguear" method="POST">
+
+            <input type="text" name="codigo" placeholder="Usuario"><br>
+            <input type="password" name="contrasena" placeholder="Contraseña"><br>
+            <button type="submit" class="btn btn-ingresar" name="btnIngresar">Ingresar</button>
+
+        </form>
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+
+<footer style="margin-top: -55px;">
+    <div class="container" >
+        <span>2018 EMAPAVIGS |  Todos los Derechos Reservados &copy; | Powered by <a href="">DevMaster</a></span>
+    </div>
+</footer>
+
+
+</body>
+</html>
+
+
+
+

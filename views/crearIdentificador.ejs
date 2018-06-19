@@ -1,0 +1,363 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - NUEVA FICHA</title>
+<body class="crear-page">
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <!-- Text Logo -->
+                <!--<a href="index.html" class="logo">-->
+                <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                <!--</a>-->
+                <!-- Image Logo -->
+                <a href="/principal" class="logo">
+                    <img src="../img/logo_emapa_s.svg" alt="" height="50" class="logo-small">
+                    <img src="../img/logo_emapa.svg" alt="" height="40" class="logo-large">
+                </a>
+
+            </div>
+            <!-- End Logo container-->
+
+
+            <div class="menu-extras topbar-custom">
+
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle nav-link">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </li>
+
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
+                           href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+
+                            <i class="far fa-user fa-lg"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+
+                            <!-- item-->
+                            <a href="/logout" class="dropdown-item notify-item">
+                                <i class="fas fa-power-off "></i> Logout
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- end menu-extras -->
+
+            <div class="clearfix"></div>
+
+        </div> <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+
+
+</header>
+<!-- End Navigation Bar-->
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Nueva Ficha Catastral - <span>Identificación</span></h3>
+        
+        <form id="identificacion">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="basic2">Ficha</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic">N°</span>
+                            </div>
+                            <input type="text" class="form-control ficha-number" value="-" id="basic2"
+                                   aria-describedby="basic" disabled>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sucursal">Sucursal</label>
+                            <select class="" name="sucursal" id="sucursal">
+                                <option value="01">Nazca</option>
+                                <option value="05">Vista Alegre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="estado_conexion">Estado de Conexión</label>
+                            <select class="" name="estado_conexion" id="estado_conexion">
+                                <% estados_conexion.forEach(function(estado_conexion){ %>
+                                <option value="<%= estado_conexion.codigo %>"><%= estado_conexion.valor %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+            <div class="card-box">
+                <h4 class="page-title" style="padding-bottom: 15px; line-height: normal">Nuevo Código Catastral</h4>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" type="text" value=" <%= departamento.codigo %>"
+                                   disabled>
+                            <small class="form-text text-muted">Dept.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" type="text" id="prov"
+                                   value=" <%= provincia.codigo %>" disabled>
+                            <small class="form-text text-muted">Prov.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" type="text" name="distrito" id="distrito"
+                                   value="<%= distrito.codigo %>" disabled>
+                            <small class="form-text text-muted">Dist.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <select name="sector" id="sector">
+                                <% sectores.forEach(function(sector){ %>
+                                <option value="<%= sector.codigo %>"><%= sector.valor %></option>
+                                <% }) %>
+                            </select>
+                            <small class="form-text text-muted">Sect.</small>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <select name="manzana" id="manzana">
+                                <% manzanas.forEach(function(manzana){ %>
+                                <option value="<%= manzana.codigo %>"><%= manzana.valor %></option>
+                                <% }) %>
+                            </select>
+
+                            <small class="form-text text-muted">Mza.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" name="lote" id="lote" type="text" required
+                                   pattern="[0-9]{4}" title="Ingrese un número de 4 digitos">
+                            <small class="form-text text-muted">Lote</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" name="conexion" id="conexion" type="text"
+                                   required pattern="[0-9]{2}" title="Ingrese un número de 2 digitos">
+                            <small class="form-text text-muted">Conex.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="prov"> Ciclo de Facturación</label>
+                            <input class="form-control form-control-sm" id="ciclo-fact" type="text"
+                                   value="<%= ciclo_facturacion.valor %>" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> Área de operaciones</label>
+                            <input class="form-control form-control-sm" id="sector_opera" name="sector_opera"
+                                   type="text" required pattern="[0-9]{2}" title="Ingrese un número de 1 - 2 digitos">
+                            <small class="form-text text-muted">Sector</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" id="subsector" name="subsector" type="text"
+                                   required pattern="[0-9]{2,3}" title="Ingrese un número de 2 - 3 digitos">
+                            <small class="form-text text-muted">Sub-Sector</small>
+                        </div>
+                    </div>
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                        <div class="col-md-12">
+                                <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                        </div>
+                    <% } %>
+
+                    <a href="/dashboard-financiera"></a>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer.ejs %>
+
+<script>
+    $('#sucursal').on('change', function () {
+
+        if ($(this).find(":selected").val() == "01") {
+            $('#distrito').val('01');
+        } else {
+            $('#distrito').val('05');
+        }
+    });
+
+    if ($('#estado_conexion').find(":selected").val() != 1) {
+        $('#basic3').attr("disabled", "disabled");
+    }
+
+    $('#estado_conexion').on('change', function () {
+
+        if ($(this).find(":selected").val() != 1) {
+            $('#basic3').attr("disabled", "disabled");
+        } else {
+            $('#basic3').removeAttr('disabled');
+        }
+    });
+
+    $(function () {
+        $('#btn-guardar').on('click', function (e) {
+
+                e.preventDefault();
+
+                $.post('/registrar-identificacion', {
+                    sucursal: $('#sucursal').val(), estado_conexion: $('#estado_conexion').val(),
+                    distrito: $('#distrito').val(), sector: $('#sector').val(), manzana: $('#manzana').val(),
+                    lote: $('#lote').val(), conexion: $('#conexion').val(), subsector: $('#subsector').val(),
+                    sector_opera: $('#sector_opera').val(),
+                    codencuestador:'<%= usuario.codigo %>'
+                })
+                    .done(function (data) {
+                        console.log(data[0].id);
+                        new Noty({
+                            type: 'success',
+                            layout: 'bottomCenter',
+                            theme: 'sunset',
+                            progressBar: true,
+                            timeout: 3000,
+                            closeWith: ['click', 'button'],
+                            text: "Se guardo correctamente el formulario"
+
+                        }).show();
+
+                        window.location.href = "/editar-identificacion/" + data[0].id;
+
+                    })
+                    .fail(function () {
+                        new Noty({
+                            type: 'alert',
+                            layout: 'bottomCenter',
+                            theme: 'sunset',
+                            progressBar: true,
+                            timeout: 3000,
+                            closeWith: ['click', 'button'],
+                            text: "Algo malo ocurrió, intentelo nuevamente"
+
+                        }).show();
+                    })
+
+                /*
+                var formData=new FormData()
+                formData.append('sucursal',$('#sucursal').val());
+                formData.append('estado_conexion',$('#estado_conexion').val());
+                formData.append('distrito',$('#distrito').val());
+                formData.append('sector',$('#sector').val());
+                formData.append('manzana',$('#manzana').val());
+                formData.append('lote',$('#lote').val());
+                formData.append('conexion',$('#conexion').val());
+                formData.append('subsector',$('#subsector').val());
+                formData.append('sector_opera',$('#sector_opera').val());
+                            for (var pair of formData.entries()) {
+                    console.log(pair[0]+ ', ' + pair[1]);
+                }
+
+                $.ajax({
+                    type: 'post',
+                    url:  '/registrar-identificacion',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        $('#btn-guardar').attr('disabled', true);
+                    },
+                    complete: function() {
+                        $('#btn-guardar').attr('disabled', false);
+                    },
+                    success: function (result) {
+                        if (result)
+                        {
+                            new Noty({
+                                layout   : 'topRight',
+                                theme    : 'mint',
+                                closeWith: ['click', 'button'],
+                                text: result
+
+                            }).show();
+
+                        }
+                    },
+                    error: function (result) {
+                        if (result){
+                            new Noty({
+                                layout   : 'topRight',
+                                theme    : 'mint',
+                                closeWith: ['click', 'button'],
+                                text: result
+
+                            }).show();
+                        }
+                    }
+                });
+                */
+
+        });
+    });
+
+
+</script>

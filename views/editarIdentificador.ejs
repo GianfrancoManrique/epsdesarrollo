@@ -1,0 +1,345 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - EDITAR IDENTIFICACIÓN</title>
+<body>
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Identificación</span></h3>
+
+        <form id="identificacion">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="basic2">Ficha</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic">N°</span>
+                            </div>
+                            <input type="text" class="form-control ficha-number" value="<%= ficha.id %>" id="basic2"
+                                   aria-describedby="basic" disabled>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sucursal">Sucursal</label>
+                            <select name="sucursal" id="sucursal">
+                                <% distritos.forEach(function(distrito){ %>
+
+                                    <% if( distrito.codigo == ficha.distrito){ %>
+                                    <option selected value="<%= distrito.codigo %>"><%= distrito.valor %></option>
+                                    <% } else{ %>
+                                    <option value="<%= distrito.codigo %>"><%= distrito.valor %></option>
+                                    <% } %>
+
+                                <% }) %>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="estado_conexion">Estado de Conexión</label>
+                            <select name="estado_conexion" id="estado_conexion">
+
+                                <% estados_conexion.forEach(function(estado_conexion){ %>
+
+                                <% if( estado_conexion.valor == ficha.estado_conexion){ %>
+                                <option selected
+                                        value="<%= estado_conexion.codigo %>"><%= estado_conexion.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= estado_conexion.codigo %>"><%= estado_conexion.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="basic3">Código Suministro</label>
+                            <% if( ficha.codsuministro == 'null'){ %>
+                            <input class="form-control form-control-sm" id="ciclo-fact" type="text"
+                                   value="-" disabled>
+                            <% } else{ %>
+                            <input class="form-control form-control-sm" id="ciclo-fact" type="text"
+                                   value="<%= ficha.codsuministro %>" disabled>
+                            <% } %>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="card-box">
+                <h4 class="page-title" style="padding-bottom: 15px; line-height: normal">Nuevo Código Catastral</h4>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <input class="form-control form-control-sm" type="text" value=" <%= departamento.codigo %>"
+                                   disabled>
+                            <small class="form-text text-muted">Dept.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <input class="form-control form-control-sm" type="text" id="prov"
+                                   value=" <%= provincia.codigo %>" disabled>
+                            <small class="form-text text-muted">Prov.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <input class="form-control form-control-sm" type="text" name="distrito" id="distrito"
+                                   value="<%= ficha.distrito %>" disabled>
+                            <small class="form-text text-muted">Dist.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select name="sector" id="sector">
+                                <% sectores.forEach(function(sector){ %>
+
+                                <% if( sector.codigo == ficha.sector){ %>
+                                <option selected value="<%= ficha.sector %>"><%= sector.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= sector.codigo %>"><%= sector.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                            <small class="form-text text-muted">Sect.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <select name="manzana" id="manzana">
+                                <% manzanas.forEach(function(manzana){ %>
+                                <% if( manzana.codigo == ficha.manzana){ %>
+                                <option selected value="<%= ficha.manzana %>"><%= manzana.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= manzana.codigo %>"><%= manzana.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+
+                            <small class="form-text text-muted">Mza.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+
+                            <input class="form-control form-control-sm" value="<%= ficha.lote %>" name="lote" id="lote"
+                                   type="text" required pattern="[0-9]{4}" title="Ingrese un número de 4 digitos">
+                            <small class="form-text text-muted">Lote</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> &#160;</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.conexion %>" name="conexion" id="conexion" type="text"
+                                   required pattern="[0-9]{2}" title="Ingrese un número de 2 digitos">
+                            <small class="form-text text-muted">Conex.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="prov"> Ciclo de Facturación</label>
+                            <input class="form-control form-control-sm" id="ciclo-fact" type="text"
+                                   value="<%= ciclo_facturacion.valor %>" disabled>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov"> Área de operaciones</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.sector_opera %>" id="sector_opera" name="sector_opera"
+                                   type="text" required pattern="[0-9]{2}" title="Ingrese un número de 1 - 2 digitos">
+                            <small class="form-text text-muted">Sector</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prov">  &#160;</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.subsector %>" id="subsector" name="subsector" type="text"
+                                   required pattern="[0-9]{2,3}" title="Ingrese un número de 2 - 3 digitos">
+                            <small class="form-text text-muted">Sub-Sector</small>
+                        </div>
+                    </div>
+
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+
+                    </div>
+                    <% } %>
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer.ejs %>
+
+<script>
+
+    <% if( ficha.distrito == null){ %>
+        $('#distrito').val('01');
+    <% } %>
+
+
+    $('#sucursal').on('change', function () {
+        if ($(this).find(":selected").val() == "01") {
+            $('#distrito').val('01');
+        } else {
+            $('#distrito').val('05');
+        }
+    });
+
+    if ($('#estado_conexion').find(":selected").val() != 1) {
+        $('#basic3').attr("disabled", "disabled");
+    }
+
+    $('#estado_conexion').on('change', function () {
+
+        if ($(this).find(":selected").val() != 1) {
+            $('#basic3').attr("disabled", "disabled");
+        } else {
+            $('#basic3').removeAttr('disabled');
+        }
+    });
+
+    $(function () {
+        $('#btn-guardar').on('click', function (e) {
+
+            e.preventDefault();
+
+            $.post('/guardar-identificacion/<%= ficha.id %>', {
+                sucursal: $('#sucursal').val(),
+                estado_conexion: $('#estado_conexion').val(),
+                distrito: $('#distrito').val(),
+                sector: $('#sector').val(),
+                manzana: $('#manzana').val(),
+                lote: $('#lote').val(),
+                conexion: $('#conexion').val(),
+                subsector: $('#subsector').val(),
+                sector_opera: $('#sector_opera').val(),
+                codencuestador:'<%= usuario.codigo %>',
+                beforeSend: function(){
+                    $("#btn-guardar").attr("disabled","disabled");
+                    $("#btn-guardar").val("Guardando...");
+                }
+            })
+                .done(function (data) {
+
+                    new Noty({
+                        type: 'success',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Guardando..."
+
+                    }).show();
+
+
+                    window.location.href = "/editar-identificacion/"+<%= ficha.id %>;
+
+
+                })
+                .fail(function () {
+                    new Noty({
+                        type: 'alert',
+                        layout: 'bottomCenter',
+                        theme: 'sunset',
+                        progressBar: true,
+                        timeout: 3000,
+                        closeWith: ['click', 'button'],
+                        text: "Algo malo ocurrió, intentelo nuevamente"
+
+                    }).show();
+                })
+
+            /*
+             var formData=new FormData()
+             formData.append('sucursal',$('#sucursal').val());
+             formData.append('estado_conexion',$('#estado_conexion').val());
+             formData.append('distrito',$('#distrito').val());
+             formData.append('sector',$('#sector').val());
+             formData.append('manzana',$('#manzana').val());
+             formData.append('lote',$('#lote').val());
+             formData.append('conexion',$('#conexion').val());
+             formData.append('subsector',$('#subsector').val());
+             formData.append('sector_opera',$('#sector_opera').val());
+             for (var pair of formData.entries()) {
+             console.log(pair[0]+ ', ' + pair[1]);
+             }
+
+             $.ajax({
+             type: 'post',
+             url:  '/registrar-identificacion',
+             data: formData,
+             processData: false,
+             contentType: false,
+             beforeSend: function() {
+             $('#btn-guardar').attr('disabled', true);
+             },
+             complete: function() {
+             $('#btn-guardar').attr('disabled', false);
+             },
+             success: function (result) {
+             if (result)
+             {
+             new Noty({
+             layout   : 'topRight',
+             theme    : 'mint',
+             closeWith: ['click', 'button'],
+             text: result
+
+             }).show();
+
+             }
+             },
+             error: function (result) {
+             if (result){
+             new Noty({
+             layout   : 'topRight',
+             theme    : 'mint',
+             closeWith: ['click', 'button'],
+             text: result
+
+             }).show();
+             }
+             }
+             });
+             */
+        });
+    });
+
+
+</script>

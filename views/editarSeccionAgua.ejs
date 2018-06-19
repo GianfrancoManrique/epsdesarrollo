@@ -1,0 +1,442 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - EDITAR AGUA</title>
+
+<body>
+
+<% include partials/menu-editar.ejs %>
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Sección Agua</span></h3>
+
+
+        <div class="card-box">
+
+            <div class="row">
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="estados">Estado</label>
+                        <select name="" id="est_agua">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% estados_agua.forEach(function(estado_agua){ %>
+                            <% if( estado_agua.codigo == ficha.estado_agua){ %>
+                            <option selected value="<%= estado_agua.codigo %>"><%= estado_agua.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= estado_agua.codigo %>"><%= estado_agua.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="categoria">Categoría</label>
+                        <select name="" id="categoria">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% categorias_agua.forEach(function(categoria_agua){ %>
+
+                            <% if( categoria_agua.codigo == ficha.categoria_agua){ %>
+                            <option selected value="<%= categoria_agua.codigo %>"><%= categoria_agua.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= categoria_agua.codigo %>"><%= categoria_agua.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tcobmed">Tipo de Cobranza/Medición</label>
+                        <select name="" id="tcobmed">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_cobranza_medicion.forEach(function(tipo_cobranza_medicion){ %>
+
+                            <% if( tipo_cobranza_medicion.codigo == ficha.tipo_cobranza_medicion){ %>
+                            <option selected value="<%= tipo_cobranza_medicion.codigo %>"><%= tipo_cobranza_medicion.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= tipo_cobranza_medicion.codigo %>"><%= tipo_cobranza_medicion.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="macro">Macrosector</label>
+                        <select name="" id="macro">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% macrosectores.forEach(function(macrosector){ %>
+
+                                <% if(  macrosector.codigo == ficha.macrosector_agua){ %>
+                                <option selected value="<%= macrosector.codigo %>"><%= macrosector.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= macrosector.codigo %>"><%= macrosector.valor %></option>
+                                <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sector">Sector</label>
+                        <select name="" id="sector">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% sectores.forEach(function(sector){ %>
+
+
+                            <% if(  sector.codigo == ficha.sector_agua ){ %>
+                            <option selected value="<%= sector.codigo %>"><%= sector.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= sector.codigo %>"><%= sector.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="multiusuario">Multiusuario</label>
+
+                        <select name="" id="multiusuario">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% if( ficha.multiusuario_agua == true ){ %>
+                            <option selected  value="true">SI</option>
+                            <option  value="false">NO</option>
+                            <% } else{ %>
+                            <option value="true">SI</option>
+                            <option selected  value="false">NO</option>
+                            <% } %>
+                        </select>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="cpredios">Cant. Predios</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.cantidad_predios %>" type="text" id="cpredios">
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="cajareg">Caja de Registro</label>
+                        <select name="" id="cajareg">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% cajas_registro.forEach(function(caja_registro){ %>
+                            <% if(  caja_registro.codigo == ficha.caja_registro){ %>
+                            <option selected value="<%= caja_registro.codigo %>"><%= caja_registro.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= caja_registro.codigo %>"><%= caja_registro.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="estcaja">Estado de Caja</label>
+                        <select name="" id="estcaja">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% estados_caja_agua.forEach(function(estado_caja_agua){ %>
+
+                                <% if(  estado_caja_agua.codigo == ficha.estado_caja_agua ){ %>
+                                <option selected value="<%= estado_caja_agua.codigo %>"><%= estado_caja_agua.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= estado_caja_agua.codigo %>"><%= estado_caja_agua.valor %></option>
+                                <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="acometida">Acometida</label>
+                        <select name="" id="acometida">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% acometidas_tuberia.forEach(function(acometida_tuberia){ %>
+
+                            <% if(  acometida_tuberia.codigo == ficha.acometida_tuberia ){ %>
+                            <option selected value="<%= acometida_tuberia.codigo %>"><%= acometida_tuberia.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= acometida_tuberia.codigo %>"><%= acometida_tuberia.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dacometida">Diametro de Acometida</label>
+                        <select name="" id="dacometida">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% diametros_acometida.forEach(function(diametro_acometida){ %>
+
+
+                            <% if(  diametro_acometida.codigo == ficha.diametro_acometida ){ %>
+                            <option selected value="<%= diametro_acometida.codigo %>"><%= diametro_acometida.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= diametro_acometida.codigo %>"><%= diametro_acometida.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tapa">Tapa</label>
+                        <select name="" id="tapa">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tapas.forEach(function(tapa){ %>
+                            <% if(  tapa.codigo == ficha.tapa ){ %>
+                            <option selected value="<%= tapa.codigo %>"><%= tapa.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= tapa.codigo %>"><%= tapa.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="estapa">Estado de Tapa</label>
+                        <select name="" id="estapa">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% estados_tapa.forEach(function(estado_tapa){ %>
+                            <% if(  estado_tapa.codigo == ficha.estado_tapa ){ %>
+                            <option selected value="<%= estado_tapa.codigo %>"><%= estado_tapa.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= estado_tapa.codigo %>"><%= estado_tapa.valor %></option>
+                            <% } %>
+
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tconsumidor">Tipo de Consumidor</label>
+                        <select name="" id="tconsumidor">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_consumidor.forEach(function(tipo_consumidor){ %>
+                            <% if(  tipo_consumidor.codigo == ficha.tipo_consumidor ){ %>
+                            <option selected value="<%= tipo_consumidor.codigo %>"><%= tipo_consumidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= tipo_consumidor.codigo %>"><%= tipo_consumidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="pavimento">Pavimento</label>
+                        <select name="" id="pavimento">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% pavimentos.forEach(function(pavimento){ %>
+
+                            <% if(  pavimento.codigo  == ficha.pavimento ){ %>
+                            <option selected value="<%= pavimento.codigo %>"><%= pavimento.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= pavimento.codigo %>"><%= pavimento.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="locnox">Localizacion de conex.</label>
+                        <select name="" id="loconx">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% localizaciones_conexion.forEach(function(localizacion_conexion){ %>
+                            <% if(  localizacion_conexion.codigo  == ficha.localizacion_conexion ){ %>
+                            <option selected value="<%= localizacion_conexion.codigo %>"><%= localizacion_conexion.valor %></option>
+
+                            <% } else{ %>
+                            <option value="<%= localizacion_conexion.codigo %>"><%= localizacion_conexion.valor %></option>
+
+                            <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="comuna">Ubicación(MTS)</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.ubicacion_metros %>" type="text" id="ubicacion">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tienef" class="d-block">Fugas</label>
+
+                        <select name="" id="tienef">
+
+                            <% if( ficha.tiene_fuga == 'SI' ){ %>
+                            <option selected  value="SI">SI</option>
+                            <option  value="NO">NO</option>
+                            <option value="">SIN VALOR</option>
+                            <% } else if (ficha.tiene_fuga == 'NO'){ %>
+                            <option value="SI">SI</option>
+                            <option selected  value="NO">NO</option>
+                            <option value="">SIN VALOR</option>
+                            <% } else if (ficha.tiene_fuga == 'SIN_VALOR') {%>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                            <option selected  value="">SIN VALOR</option>
+                            <% } else { %>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option selected  value="">SIN VALOR</option>
+                            <% }  %>
+                        </select>
+
+
+
+
+                    </div>
+                </div>
+                <% if(usuario.tipo.trim()=='E'){ %>
+                <div class="col-md-12">
+                    <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $('#btn-guardar').on('click', function (e) {
+
+        e.preventDefault();
+        
+        var cpredios=parseInt($('#cpredios').val());
+
+        if (isNaN(cpredios)){
+            alert('Cantidad de predios no válido.Ingrese un valor entero.');
+            return;
+        }
+
+        var ubicacion=parseFloat($('#ubicacion').val());
+
+        if (isNaN(ubicacion)){
+            alert('Ubicación(MTS) no válido.Ingrese un valor válido.');
+            return;
+        }else{
+            if(ubicacion<0){
+                alert('Ubicación(MTS) no válido.Ingrese un valor válido.');
+                return;
+            }
+        }
+
+        $.post('/guardar-seccion-agua/<%= ficha.id %>', {
+            estado_agua: $('#est_agua').val(),
+            categoria_agua: $('#categoria').val(),
+            tipo_cobranza_medicion: $('#tcobmed').val(),
+            macrosector_agua: $('#macro').val(),
+            sector_agua: $('#sector').val(),
+            multiusuario_agua: $('#multiusuario').val(),
+            cantidad_predios: $('#cpredios').val(),
+            tipo_consumidor: $('#tconsumidor').val(),
+            caja_registro: $('#cajareg').val(),
+            estado_caja_agua:$('#estcaja').val(),
+            acometida_tuberia:$('#acometida').val(),
+            diametro_acometida:$('#dacometida').val(),
+            tapa:$('#tapa').val(),
+            pavimento:$('#pavimento').val(),
+            localizacion_conexion:$('#loconx').val(),
+            ubicacion_metros:$('#ubicacion').val(),
+            tiene_fuga:$('#tienef').val(),
+            estado_tapa:$('#estapa').val(),
+
+
+            beforeSend: function () {
+                $("#btn-guardar").attr("disabled", "disabled");
+                $("#btn-guardar").val("Guardando...");
+            }
+        })
+
+            .done(function (data) {
+
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Guardando..."
+
+                }).show();
+
+                window.location.href = "/editar-seccion-agua/" +<%= ficha.id %>;
+
+            })
+            .fail(function () {
+                new Noty({
+                    type: 'alert',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Algo malo ocurrió, intentelo nuevamente"
+
+                }).show();
+            })
+
+    });
+</script>
+
+
+
+
+

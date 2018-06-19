@@ -1,0 +1,39 @@
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Optional JavaScript -->
+<script type="text/javascript" src="../js/waves.js"></script>
+<script type="text/javascript" src="../js/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="../js/jquery.core.js"></script>
+<script type="text/javascript" src="../js/jquery.app.js"></script>
+<script type="text/javascript" src="../js/noty.min.js"></script>
+
+<footer>
+    <div class="container">
+        <span>2018 EMAPAVIGS |  Todos los Derechos Reservados &copy; | Powered by <a href="">DevMaster</a></span>
+    </div>
+</footer>
+
+<script>
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+
+    jQuery(document).ready(function($){
+        if(!isMobile) {
+            var lista = $(".navigation-menu li");
+            if( lista.length >= 8){
+                $(".navigation-menu").addClass("d-lg-flex justify-content-lg-center");
+                $(".navigation-menu li a").css("padding","20px");
+                $(".navigation-menu li a i").css("font-size","20px");
+            }
+        }else{
+            $("#topnav .navigation-menu").css("max-height","700px")
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <!-- Text Logo -->
+                <!--<a href="index.html" class="logo">-->
+                <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                <!--</a>-->
+                <!-- Image Logo -->
+                <a href="/principal" class="logo">
+                    <img src="../img/logo_emapa_s.svg" alt="" height="50" class="logo-small">
+                    <img src="../img/logo_emapa.svg" alt="" height="40" class="logo-large">
+                </a>
+
+            </div>
+            <!-- End Logo container-->
+
+
+            <div class="menu-extras topbar-custom">
+
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle nav-link">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </li>
+
+
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+
+                            <i class="far fa-user fa-lg"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="fas fa-power-off "></i> Logout
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- end menu-extras -->
+
+            <div class="clearfix"></div>
+
+        </div> <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="has-submenu">
+                        <a href="/editar-identificacion/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-user fa-fw"></i> <span> Identificación</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-responsable/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-male fa-fw"></i> <span> Responsable</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-ubica-geografica/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-location-arrow fa-fw"></i>  <span> Ubicación Geográfica</span> </a>
+                    </li>
+
+
+                    <li class="has-submenu">
+                        <a href="/editar-ubicacion/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-thumbtack fa-fw"></i>  <span> Ubicación</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-clasificacion/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-bookmark fa-fw"></i>  <span> Clasificación</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-agua/<%= ficha.id %>" class="btn btn-default"><i class="fas fa-tint"></i>  <span> Agua</span> </a>
+                    </li>
+                </ul>
+                <!-- End navigation menu -->
+            </div> <!-- end #navigation -->
+        </div> <!-- end container -->
+    </div> <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->

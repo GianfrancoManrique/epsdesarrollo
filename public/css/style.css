@@ -1,0 +1,529 @@
+/*================
+Estilos Globales para EMAPAVIGS
+
+
+1.- GLOBALES
+2.- LOGIN
+3.- NAV
+4.- FOOTER
+5.- PRINCIPAL
+6.- FICHAS
+7.- REPORTES
+
+
+================*/
+
+/*============
+1.- GLOBALES
+=============*/
+body{
+    --principal: #2F80ED;
+    --secundario: #56CCF2;
+    --gray: rgba(0,0,0,.4);
+    --bg-dark: rgba(0,0,0,.2);
+    --bg-light: rgba(255,255,255,.2);
+    --i-sh-invalid: rgba(255, 0, 0,.2);
+    --i-bg-invalid: rgba(255, 0, 0,.2);
+    --i-tx-invalid: #ff0000;
+    --i-sh-focus: rgba(47, 128, 237,.2);
+    --i-bg-focus: rgba(47, 128, 237,.2);
+    --i-tx-focus: #2F80ED;
+}
+
+html {
+    font-size: 1rem;
+    -webkit-appearance:none;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.wrapper{
+    min-height: 100%;
+}
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 500px;
+}
+.navigation-menu li a span{
+    display: none;
+}
+/*==================
+2.- LOGIN
+/*==================*/
+.login, .reportes{
+    background: var(--secundario);  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, var(--principal), var(--secundario));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, var(--principal), var(--secundario)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-bottom: 0;
+}
+
+.line-login div{
+    display: inline-block;
+    width: 1px;
+    height: 150px;
+    background: var(--light);
+
+}
+
+.line-login{
+    text-align: center;
+}
+
+.logo-login{
+    font-weight: bold;
+    letter-spacing: 6px;
+    color: var(--light);
+    position: relative;
+    pointer-events: none;
+}
+.logo-login:after{
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 150px;
+    background: var(--light);
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
+.logo-login span{
+    font-size: 0.875rem;
+    position: absolute;
+    bottom: 31px;
+    left: 24px;
+    font-weight: 100;
+}
+
+.logo-principal h1 img{
+    width: 100%;
+}
+
+.btn-ingresar{
+    background: #fff;
+    color: #000;
+}
+/*==================
+3.- NAV
+/*==================*/
+
+
+.navbar{
+    background: var(--secundario);  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, var(--principal), var(--secundario));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, var(--principal), var(--secundario)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.logo-sec{
+    font-weight: bold;
+    letter-spacing: 6px;
+    color: var(--light);
+    position: relative;
+    pointer-events: none;
+    font-size: 1.5625rem;
+}
+
+.logo-sec span{
+    font-size: 0.5625rem;
+    position: absolute;
+    bottom: -10px;
+    left: 8px;
+    font-weight: 400;
+}
+
+.nav-item span{
+    font-size: 1.25rem;
+    color: var(--light);
+    font-weight: bold;
+}
+
+.crear-page .navbar-custom{
+    display: none;
+}
+/*==================
+4.- FOOTER
+/*==================*/
+
+footer{
+    margin-top: -15px;
+    padding: 15px 0;
+    text-align: center;
+    color: var(--gray);
+    background-color: var(--bg-light);
+}
+footer a{
+    color: var(--gray);
+    transition: all .5s;
+}
+footer a:hover{
+    color: var(--red);
+}
+/*==================
+5.- PRINCIPAL
+/*==================*/
+.welcome-msg{
+    color: var(--light);
+    font-weight: 100;
+}
+
+.welcome-msg span{
+    font-weight: 400;
+}
+
+.item-prin{
+    display: inline-block;
+    border: solid 1px #fff;
+    border-radius: 6px;
+    width: 170px;
+    height: 170px;
+    text-align: center;
+    color: #fff;
+    font-weight: 100;
+    text-transform: uppercase;
+    transition: all .5s;
+    position: relative;
+    margin: 50px;
+    box-shadow: 0 0 10px transparent;
+}
+.item-prin:after{
+    content: '';
+    border: solid 1px #fff;
+    border-radius: 6px;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all .3s;
+}
+
+.item-prin:hover{
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.item-prin:hover:after{
+    opacity: .3;
+    transform: scale(1);
+}
+.item-prin:hover i{
+    transform: scale(1.5);
+}
+.item-prin i{
+    padding: 20px;
+    font-size: 30px;
+    transition: all .2s;
+}
+.item-logout{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    opacity: .5;
+    transition: all .5s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.item-logout:hover{
+    color: #fff;
+    opacity: 1;
+}
+
+.item-before{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    opacity: .5;
+    transition: all .5s;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+.item-before:hover{
+    color: #fff;
+    opacity: 1;
+}
+
+
+.login,.reportes{
+    overflow: hidden;
+}
+
+.calendario{
+    margin-bottom: 25px;
+}
+
+/*==================
+6.- FICHAS
+/*==================*/
+
+.form-content{
+    min-height: 100%;
+}
+.form-content form{
+    width: 300px;
+    height: 350px;
+    padding: 20px;
+    color: var(--light);
+}
+.form-content form label{
+    font-weight: 500;
+}
+.form-content form input, .form-content form input:hover, .form-content form input:focus{
+    background: transparent;
+    color: var(--light);
+    border: none;
+    border-radius: 0;
+    border-bottom: solid 1px #f1f1f1;
+    padding: 5px 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-content form input::placeholder{
+    color: rgba(255,255,255,.3);
+}
+/*
+select{
+    background: url(../img/flecha.svg) no-repeat right;
+    background-size: 12px;
+    background-origin: content-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+}*/
+
+select {
+    font-size: 14px !important;
+    width: 100%;
+    background-color: white;
+    border: thin solid #E3E3E3;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.7em;
+    padding: 0.5em 3.5em 0.5em 1em;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--principal) 50%), linear-gradient(135deg, var(--principal) 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+    
+}
+
+
+select:focus {
+    background-image:
+            linear-gradient(45deg, var(--principal) 50%, transparent 50%),
+            linear-gradient(135deg, transparent 50%, var(--principal) 50%),
+            linear-gradient(to right, #ccc, #ccc);
+    background-position:
+            calc(100% - 15px) 1em,
+            calc(100% - 20px) 1em,
+            calc(100% - 2.5em) 0.5em;
+    background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: var(--gray);
+    outline: 0;
+}
+
+.ficha-title{
+    margin: 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: .5;
+}
+
+.tab-pane{
+    padding: 20px 0;
+}
+
+.form-group label{
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.group{
+    border: 1px solid #f1f1f1;
+    padding: 20px 20px 10px 20px;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.group h3{
+    padding: 10px 20px;
+    background: var(--light);
+    position: absolute;
+    top: -20px;
+    font-size: 1.06rem;
+}
+.group h4{
+    font-size: 0.8125rem;
+}
+.tbold{
+    font-weight: bold;
+    color: #000;
+}
+.radios label{
+    margin-right: 10px;
+}
+
+.ficha-number{
+    border: solid 1px #E9ECEF;
+    background: #E9ECEF !important;
+    font-weight: bold;
+    color: var(--dark);
+}
+#basic, #basic-se{
+    background: #d4d7da;
+    border: solid 1px #d4d7da;
+    color: var(--dark);
+    font-weight: bold;
+}
+#basic3{
+    background: var(--secundario);
+    border: solid 1px var(--secundario);
+    font-weight: bold;
+}
+.btn-emapa{
+    background: var(--principal);
+    color: var(--light);
+    float: right;
+}
+
+.form-control[type="search"]{
+   color: var(--dark);
+    background: var(--i-bg-focus) !important;
+}
+.form-control:focus{
+    border: 1px solid var(--principal) !important;
+    background: var(--i-bg-focus) !important;
+    box-shadow: 0 0 6px var(--i-sh-focus) !important;
+}
+
+.form-control:invalid {
+     background: var(--i-bg-invalid) !important;
+     box-shadow: 0 0 6px var(--i-sh-invalid) !important;
+     border: 1px solid var(--red) !important;
+ }
+
+.form-control:invalid + .form-text {
+    color: var(--red) !important;
+}
+.form-control:invalid + .form-text:after {
+    content:" - formato incorrecto";
+    opacity: .5;
+}
+
+.form-content .form-control{
+    border-bottom: solid 1px var(--light);
+}
+.form-content .form-control:invalid {
+    background: transparent !important;
+    box-shadow: 0 0 6px transparent !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--light) !important;
+}
+.form-content .form-control:focus{
+    border: none !important;
+    border-bottom: 1px solid var(--light) !important;
+    background: transparent !important;
+    box-shadow: 0 0 6px transparent !important;
+}
+
+h3.page-title{
+    color: var(--principal);
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 13px;
+}
+h3.page-title span{
+    color:  var(--gray);
+}
+
+
+h3.page-title:after{
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background: var(--yellow);
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+}
+h3.hour{
+    color: var(--principal);
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 13px;
+}
+h3.hour span{
+    color:  var(--gray);
+}
+#map{
+    margin-bottom: 25px;
+}
+
+#topnav .navigation-menu > li > a{
+    padding-left: 0;
+    padding-right: 15px;
+}
+.explorar footer{
+    display: none;
+}
+
+/*==================
+7.- REPORTES
+/*==================*/
+
+.reporte-mapa .wrapper{
+    padding-top: 30px;
+}
+#map_wrapper {
+    height: 600px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}
+.foto-box{
+    position: relative;
+    margin-bottom: 20px;
+}
+.foto-box img{
+    width: 100%;
+}
+
+.foto-box i{
+    position: absolute;
+    background: rgba(32, 125, 201,.8);
+    padding: 30px;
+    border-radius: 60px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}

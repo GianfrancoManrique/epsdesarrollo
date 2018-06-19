@@ -1,0 +1,137 @@
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <!-- Text Logo -->
+                <!--<a href="index.html" class="logo">-->
+                <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                <!--</a>-->
+                <!-- Image Logo -->
+                <a href="/principal" class="logo">
+                    <img src="../img/logo-emapa-min.svg" alt="" height="50" class="logo-small">
+                    <img src="../img/logo-emapa-final.svg" alt="" height="40" class="logo-large">
+                </a>
+
+            </div>
+            <!-- End Logo container-->
+
+
+            <div class="menu-extras topbar-custom">
+
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle nav-link">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </li>
+
+
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+
+                            <i class="far fa-user fa-lg"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+
+                            <!-- item-->
+                            <a href="/logout" class="dropdown-item notify-item">
+                                <i class="fas fa-power-off "></i> Logout
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- end menu-extras -->
+
+            <div class="clearfix"></div>
+
+        </div> <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="has-submenu">
+                        <a href="/editar-identificacion/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Identificación"><i class="fas fa-user fa-fw"></i> <span> Identificación</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-responsable/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Responsable"><i class="fas fa-male fa-fw"></i> <span> Responsable</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-ubica-geografica/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Ubicación Geográfica"><i class="fas fa-location-arrow fa-fw"></i>  <span> Ubicación Geográfica</span> </a>
+                    </li>
+
+
+                    <li class="has-submenu">
+                        <a href="/editar-ubicacion/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Ubicación"><i class="fas fa-thumbtack fa-fw"></i>  <span> Ubicación</span> </a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/editar-clasificacion/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Clasificación"><i class="fas fa-bookmark fa-fw"></i>  <span> Clasificación</span> </a>
+                    </li>
+
+
+                    <% if( ficha.tipo_servicio == "A" ){ %>
+                        <li class="has-submenu">
+                            <a href="/editar-seccion-agua/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Agua"><i class="fas fa-shower"></i>  <span> Agua</span> </a>
+                        </li>
+                    <% } else if ( ficha.tipo_servicio == "D" ){ %>
+                        <li class="has-submenu">
+                            <a href="/editar-seccion-desague/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Desague"><i class="fas fa-tint"></i>  <span> Desague</span> </a>
+                        </li>
+                    <% } else if ( ficha.tipo_servicio == "AD" ){ %>
+                        <li class="has-submenu">
+                            <a href="/editar-seccion-agua/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Agua"><i class="fas fa-shower"></i>  <span> Agua</span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="/editar-seccion-desague/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Desague"><i class="fas fa-tint"></i>  <span> Desague</span> </a>
+                        </li>
+                    <% } else{ %>
+
+                    <% } %>
+                    <li class="has-submenu">
+                        <a href="/editar-unidades-uso/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Unidades de Uso"><i class="fas fa-check"></i>  <span> Unidades de Uso</span> </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/editar-datos-medidor/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Datos Medidor"><i class="fas fa-tachometer-alt"></i>  <span> Datos Medidor</span> </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/editar-datos-generales/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Datos Generales"><i class="fas fa-archive"></i>  <span> Datos Generales</span> </a>
+                    </li>
+                    <% if( usuario.tipo.trim() == "S" ){ %>
+                    <li class="has-submenu">
+                        <a href="/imprimir-ficha/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Imprimir Ficha"><i class="fas fa-print"></i>  <span> Imprimir Ficha</span> </a>
+                    </li>
+                    <% } %>
+                    <li class="has-submenu">
+                        <a href="/editar-fotos/<%= ficha.id %>" class="btn btn-default"  data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Subir Fotos"><i class="fas fa-images"></i>  <span> Subir Fotos</span> </a>
+                    </li>
+
+                </ul>
+                <!-- End navigation menu -->
+            </div> <!-- end #navigation -->
+        </div> <!-- end container -->
+    </div> <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->

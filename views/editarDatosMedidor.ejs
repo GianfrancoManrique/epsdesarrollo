@@ -1,0 +1,205 @@
+<% include partials/head %>
+<title>EMAPAVIGS - EDITAR UBICACIÓN GEOGRÁFICA</title>
+<body>
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Datos del Medidor</span></h3>
+
+
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="marca">Marca del Medidor</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.marca_medidor %>"
+                               type="text" id="marca">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="numero">Número del Medidor</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.num_medidor %>"
+                               type="text" id="numero">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="lectura">Lectura</label>
+                        <input class="form-control form-control-sm" value="<%= ficha.lectura %>"
+                               type="text" id="lectura">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="diametro">DIAMETRO</label>
+                        <select name="" id="diametro">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% diametros_medidor.forEach(function(diametro_medidor){ %>
+                            <% if( diametro_medidor.codigo == ficha.diametro_medidor){ %>
+                            <option selected value="<%= diametro_medidor.codigo %>"><%= diametro_medidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= diametro_medidor.codigo %>"><%= diametro_medidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="estado">ESTADO DEL MEDIDOR</label>
+                        <select name="" id="estado">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% estados_medidor.forEach(function(estado_medidor){ %>
+                            <% if( estado_medidor.codigo == ficha.estado_medidor ){ %>
+                            <option selected value="<%= estado_medidor.codigo %>"><%= estado_medidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= estado_medidor.codigo %>"><%= estado_medidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="posicion">POSICION DEL MEDIDOR</label>
+                        <select name="" id="posicion">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% posiciones_medidor.forEach(function(posicion_medidor){ %>
+                            <% if( posicion_medidor.codigo == ficha.posicion_medidor ){ %>
+                            <option selected value="<%= posicion_medidor.codigo %>"><%= posicion_medidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= posicion_medidor.codigo %>"><%= posicion_medidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="valvulas">VALVULAS</label>
+                        <select name="" id="valvulas">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% valvulas.forEach(function(valvula){ %>
+                            <% if( valvula.codigo == ficha.valvula ){ %>
+                            <option selected value="<%= valvula.codigo %>"><%= valvula.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= valvula.codigo %>"><%= valvula.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tmedidor">TIPO DE MEDIDOR</label>
+                        <select name="" id="tmedidor">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% tipos_medidor.forEach(function(tipo_medidor){ %>
+                            <% if( tipo_medidor.codigo == ficha.tipo_medidor ){ %>
+                            <option selected value="<%= tipo_medidor.codigo %>"><%= tipo_medidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= tipo_medidor.codigo %>"><%= tipo_medidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="seguridad">SEGURIDAD DE MEDIDOR</label>
+                        <select name="" id="seguridad">
+                            <option value="0">SELECCIONE UNA OPCIÓN</option>
+                            <% seguridades_medidor.forEach(function(seguridad_medidor){ %>
+                            <% if( seguridad_medidor.codigo == ficha.seguridad_medidor ){ %>
+                            <option selected value="<%= seguridad_medidor.codigo %>"><%= seguridad_medidor.valor %></option>
+                            <% } else{ %>
+                            <option value="<%= seguridad_medidor.codigo %>"><%= seguridad_medidor.valor %></option>
+                            <% } %>
+
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <% if(usuario.tipo.trim()=='E'){ %>
+                <div class="col-md-12">
+                    <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+
+                </div>
+                <% } %>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+    <% include partials/footer %>
+
+    <script>
+        $(function () {
+            $('#btn-guardar').on('click', function (e) {
+
+                e.preventDefault();
+
+                $.post('/guardar-datos-medidor/<%= ficha.id %>', {
+                    marca_medidor:$('#marca').val(),
+                    num_medidor:$('#numero').val(),
+                    lectura:$('#lectura').val(),
+                    diametro_medidor:$('#diametro').val(),
+                    estado_medidor:$('#estado').val(),
+                    posicion_medidor:$('#posicion').val(),
+                    valvula:$('#valvulas').val(),
+                    tipo_medidor:$('#tmedidor').val(),
+                    seguridad_medidor:$('#seguridad').val(),
+
+
+                    beforeSend: function () {
+                        $("#btn-guardar").attr("disabled", "disabled");
+                        $("#btn-guardar").val("Guardando...");
+                    }
+                })
+
+                    .done(function (data) {
+
+                        new Noty({
+                            type: 'success',
+                            layout: 'bottomCenter',
+                            theme: 'sunset',
+                            progressBar: true,
+                            timeout: 3000,
+                            closeWith: ['click', 'button'],
+                            text: "Guardando..."
+
+                        }).show();
+
+                        window.location.href = "/editar-datos-medidor/"+<%= ficha.id %>;
+
+                    })
+                    .fail(function () {
+                        new Noty({
+                            type: 'alert',
+                            layout: 'bottomCenter',
+                            theme: 'sunset',
+                            progressBar: true,
+                            timeout: 3000,
+                            closeWith: ['click', 'button'],
+                            text: "Algo malo ocurrió, intentelo nuevamente"
+
+                        }).show();
+                    })
+
+            });
+        });
+    </script>

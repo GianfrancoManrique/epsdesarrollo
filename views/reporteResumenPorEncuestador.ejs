@@ -1,0 +1,196 @@
+<% include partials/head.ejs %>
+<title>EMAPAVIGS - REPORTE MAPA</title>
+
+<body class="reporte-mapa">
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">EMAPAVIGS REPORTE - <span> RESUMEN POR ENCUESTADOR</span></h3>
+
+        <% if(usuario.tipo.trim()=='S'){ %>
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Resumen al:</label>
+                    <input class="calendario form-control" type="date">
+                </div>
+
+            </div>
+        </div>
+
+
+        <table style="text-align: center" class="table table-striped table-bordered table-responsive-lg table-responsive-md table-sm">
+            <thead  class="bg-success" style="color: #fff; ">
+            <tr style="border-radius: 10px">
+                <th>CODIGO ENCUESTADOR</th>
+                <th>NOMBRE COMPLETO</th>
+                <th>TOTAL FICHAS</th>
+
+            </tr>
+            </thead>
+            <tbody id="lista">
+
+            </tbody>
+
+        </table>
+
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table style="text-align: center" class="table table-striped table-bordered table-responsive-lg table-responsive-md table-sm">
+                            <thead  style="color: #fff; ">
+                            <tr style="border-radius: 10px; color: #393939;">
+                                <th>CODIGO SUMINISTRO</th>
+                                <th>ESTADO DE CONEXIÓN</th>
+                                <th>FECHA HORA</th>
+                                <th>ACCIONES</th>
+
+                            </tr>
+                            </thead>
+                            <tbody id="fichas">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <h3 class="page-title">EMAPAVIGS REPORTE - <span> RESUMEN GLOBAL</span></h3>
+        <table style="text-align: center" class="table table-striped table-bordered table-responsive-lg table-responsive-md table-sm">
+            <thead  class="bg-primary" style="color: #fff; ">
+            <tr style="border-radius: 10px">
+                <th>CODIGO ENCUESTADOR</th>
+                <th>NOMBRE COMPLETO</th>
+                <th>TOTAL FICHAS</th>
+
+            </tr>
+            </thead>
+            <tbody >
+            <% resumenPorEncuestador.forEach(function(resumen){ %>
+            <tr>
+                <td><%= resumen.codencuestador %></td>
+                <td><%= resumen.nombrecompleto %></td>
+                <td><%= resumen.totalfichas %></td>
+
+            </tr>
+            <% }) %>
+            </tbody>
+
+        </table>
+
+        <% } else { %>
+            <h2>Reporte no autorizado.</h2>
+        <% } %>
+
+    </div>
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $(document).ready(function(){
+        var resultado = "";
+        var hr = new Date();
+
+        var time =  hr.getHours() + ":" + hr.getMinutes();
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        $('.calendario').val(d.getFullYear() + '-' + ((''+month).length<2 ? '0' : '') + month + '' + '-' + ((''+day).length<2 ? '0' : '') + day);
+        var hoy = d.getFullYear() + '-' + ((''+month).length<2 ? '0' : '') + month + '' + '-' + ((''+day).length<2 ? '0' : '') + day;
+
+        $(function() {
+            $.get( "reporte-resumen-diario/"+hoy)
+                .done(function( data ) {
+
+
+                    $.each(data, function(i, item) {
+                        resultado += '<tr><td><a href="" class="fichas" data-ficha="' + item.codencuestador + '" data-toggle="modal" data-target="#exampleModal">' + item.codencuestador + '</a></td><td>' + item.nombrecompleto + '</td><td>' + item.totalfichas + '</td></tr>'
+                    });
+
+
+                    $("#lista").html(resultado);
+
+                    $('.fichas').click(function (e) {
+                        var resultado3 = "";
+                        e.preventDefault();
+                        var dataf = $(this).attr("data-ficha");
+                        $.post( "reporte-detalle-encuestador/"+dataf,{
+                            fecha: hoy
+                        })
+                            .done(function( data ) {
+                                $.each(data, function(i, item) {
+                                    console.log(item);
+                                    resultado3 += '<tr><td>' + item.codsuministro+ '</td><td>' + item.estado_conexion + '</td><td>' + item.fechora + '</td><td><a href="/editar-identificacion/' + item.id + '">Editar Ficha</a></td></tr>'
+                                });
+                                $("#fichas").html(resultado3);
+                                $("#exampleModalLabel").html(dataf);
+                            });
+                    });
+                });
+        })
+
+
+
+        $('.calendario').change(function(e){
+            e.preventDefault();
+
+            var resultado = "";
+            var fecha = this.value;         //Date in full format alert(new Date(this.value));
+
+            $.get( "reporte-resumen-diario/"+fecha)
+                .done(function( data ) {
+
+                    $.each(data, function(i, item) {
+                        resultado += '<tr><td><a href="" class="fichas" data-ficha="' + item.codencuestador + '" data-toggle="modal" data-target="#exampleModal">' + item.codencuestador + '</a></td><td>' + item.nombrecompleto + '</td><td>' + item.totalfichas + '</td></tr>'
+                    });
+
+
+                    $("#lista").html(resultado);
+
+                    $('.fichas').click(function (e) {
+                        var resultado2 = "";
+                        e.preventDefault();
+                        var dataf = $(this).attr("data-ficha");
+                        $.post( "reporte-detalle-encuestador/"+dataf,{
+                            fecha: fecha
+                        })
+                            .done(function( data ) {
+                                $.each(data, function(i, item) {
+                                    console.log(item);
+                                    resultado2 += '<tr><td>' + item.codsuministro+ '</td><td>' + item.estado_conexion + '</td><td>' + item.fechora + '</td><td><a href="/editar-identificacion/' + item.id + '">Editar Ficha</a></td></tr>'
+                                });
+                                $("#fichas").html(resultado2);
+                                $("#exampleModalLabel").html(dataf);
+                            });
+                    });
+                });
+
+
+        });
+
+
+
+
+
+    });
+
+</script>

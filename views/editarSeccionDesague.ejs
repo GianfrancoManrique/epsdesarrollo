@@ -1,0 +1,307 @@
+<% include partials/head %>
+<title>EMAPAVIGS - EDITAR DESAGUE</title>
+<body>
+
+<% include partials/menu-editar.ejs %>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">Ficha Catastral - <span>Sección Desague</span></h3>
+
+
+        <div class="card-box">
+
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="estado">ESTADO</label>
+                            <select name="" id="estado">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% estados_conexion_desague.forEach(function(estado_conexion_desague){ %>
+                                <% if( ficha.estado_desague == estado_conexion_desague.codigo ){ %>
+                                <option selected  value="<%= estado_conexion_desague.codigo %>"><%= estado_conexion_desague.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= estado_conexion_desague.codigo %>"><%= estado_conexion_desague.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="categoria">CATEGORIA</label>
+                            <select name="" id="categoria">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% categorias_desague.forEach(function(categoria_desague){ %>
+
+                                <% if( ficha.categoria_desague == categoria_desague.codigo ){ %>
+                                <option selected value="<%= categoria_desague.codigo %>"><%= categoria_desague.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= categoria_desague.codigo %>"><%= categoria_desague.valor %></option>
+                                <% } %>
+
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="macrosector">MACROSECTOR</label>
+                            <select name="" id="macrosector">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% macrosectores_desague.forEach(function(macrosector_desague){ %>
+
+                                <% if( ficha.macrosector_desague == macrosector_desague.codigo ){ %>
+                                <option selected value="<%= macrosector_desague.codigo %>"><%= macrosector_desague.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= macrosector_desague.codigo %>"><%= macrosector_desague.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sector">SECTOR</label>
+                            <select name="" id="sector">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% sectores_desague.forEach(function(sector_desague){ %>
+
+                                <% if( ficha.sector_desague == sector_desague.codigo ){ %>
+                                <option selected  value="<%= sector_desague.codigo %>"><%= sector_desague.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= sector_desague.codigo %>"><%= sector_desague.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="rdistribucion">RED DE DISTRIBUCION</label>
+                            <select name="" id="rdistribucion">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% redes_distribucion_desague.forEach(function(redes_distribucion_desague){ %>
+                                <% if( ficha.red_distribucion_desague == redes_distribucion_desague.codigo ){ %>
+                                <option selected  value="<%= redes_distribucion_desague.codigo %>"><%= redes_distribucion_desague.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= redes_distribucion_desague.codigo %>"><%= redes_distribucion_desague.valor %></option>
+
+                                <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tmaterialtub">TIPO DE MATERIAL TUBERIA</label>
+                            <select name="" id="tmaterialtub">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% tipos_material_tuberia.forEach(function(tipo_material_tuberia){ %>
+                                <% if( ficha.tipo_material_tuberia == tipo_material_tuberia.codigo ){ %>
+                                <option selected  value="<%= tipo_material_tuberia.codigo %>"><%= tipo_material_tuberia.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= tipo_material_tuberia.codigo %>"><%= tipo_material_tuberia.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="dtubo">DIAMETRO DE TUBO</label>
+                            <select name="" id="dtubo">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% diametros_tubo.forEach(function(diametro_tubo){ %>
+                                <% if( ficha.diametro_tubo == diametro_tubo.codigo ){ %>
+                                <option selected  value="<%= diametro_tubo.codigo %>"><%= diametro_tubo.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= diametro_tubo.codigo %>"><%= diametro_tubo.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tcaja">TIPO DE CAJA</label>
+                            <select name="" id="tcaja">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% tipos_caja.forEach(function(tipo_caja){ %>
+                                <% if( ficha.tipo_caja == tipo_caja.codigo ){ %>
+                                <option selected   value="<%= tipo_caja.codigo %>"><%= tipo_caja.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= tipo_caja.codigo %>"><%= tipo_caja.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="estcaja">ESTADO DE CAJA</label>
+                            <select name="" id="estcaja">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% estados_caja.forEach(function(estado_caja){ %>
+                                <% if( ficha.estado_caja == estado_caja.codigo ){ %>
+                                <option selected value="<%= estado_caja.codigo %>"><%= estado_caja.valor %></option>
+                                <% } else{ %>
+                                <option value="<%= estado_caja.codigo %>"><%= estado_caja.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lcaja">LOCALIZACION DE CAJA</label>
+                            <select name="" id="lcaja">
+                                <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                <% localizaciones_caja.forEach(function(localizacion_caja){ %>
+                                <% if( ficha.localizacion_caja == localizacion_caja.codigo ){ %>
+                                <option selected  value="<%= localizacion_caja.codigo %>"><%= localizacion_caja.valor %></option>
+                                <% } else{ %>
+                                <option  value="<%= localizacion_caja.codigo %>"><%= localizacion_caja.valor %></option>
+                                <% } %>
+
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lcaja">OBSTRUIDO</label>
+
+                            <select name="" id="obstruido">
+                                <% if( ficha.estado_obstruido == 'SI' ){ %>
+                                    <option selected  value="SI">SI</option>
+                                    <option  value="NO">NO</option>
+                                    <option value="SIN_VALOR">SIN VALOR</option>
+                                <% } else if (ficha.estado_obstruido == 'NO'){ %>
+                                    <option value="SI">SI</option>
+                                    <option selected  value="NO">NO</option>
+                                    <option value="SIN_VALOR">SIN VALOR</option>
+                                <% } else if (ficha.estado_obstruido == 'SIN_VALOR'){ %>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option selected  value="SIN_VALOR">SIN VALOR</option>
+                                <% } else { %>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option selected  value="SIN_VALOR">SIN VALOR</option>
+                                <% }  %>
+                            </select>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="ubicacion">UBICACIÓN MTS.</label>
+                            <input class="form-control form-control-sm" value="<%= ficha.ubicacion_metros_desague %>" type="text" id="ubicacion">
+                        </div>
+                    </div>
+                    <% if(usuario.tipo.trim()=='E'){ %>
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar" id="btn-guardar" class="btn btn-emapa">
+                    </div>
+                    <% } %>
+                </div>
+            </form>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<% include partials/footer %>
+
+<script>
+    $('#btn-guardar').on('click', function (e) {
+
+        e.preventDefault();
+        
+        
+        var ubicacion=parseFloat($('#ubicacion').val());
+
+        if (isNaN(ubicacion)){
+            alert('Ubicación(MTS) no válido.Ingrese un valor válido.');
+            return;
+        }
+        
+        $.post('/guardar-seccion-desague/<%= ficha.id %>', {
+            estado_desague: $('#estado').val(),
+            categoria_desague: $('#categoria').val(),
+            macrosector_desague: $('#macrosector').val(),
+            sector_desague: $('#sector').val(),
+            red_distribucion_desague: $('#rdistribucion').val(),
+            tipo_material_tuberia: $('#tmaterialtub').val(),
+            diametro_tubo: $('#dtubo').val(),
+            tipo_caja: $('#tcaja').val(),
+            estado_caja: $('#estcaja').val(),
+            localizacion_caja: $('#lcaja').val(),
+            obstruido: $('#obstruido').val(),
+            ubicacion_metros_desague: $('#ubicacion').val(),
+
+            beforeSend: function () {
+                $("#btn-guardar").attr("disabled", "disabled");
+                $("#btn-guardar").val("Guardando...");
+            }
+        })
+
+            .done(function (data) {
+
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Guardando..."
+
+                }).show();
+
+                window.location.href = "/editar-seccion-desague/" +<%= ficha.id %>;
+
+            })
+            .fail(function () {
+                new Noty({
+                    type: 'alert',
+                    layout: 'bottomCenter',
+                    theme: 'sunset',
+                    progressBar: true,
+                    timeout: 3000,
+                    closeWith: ['click', 'button'],
+                    text: "Algo malo ocurrió, intentelo nuevamente"
+
+                }).show();
+            })
+
+    });
+</script>

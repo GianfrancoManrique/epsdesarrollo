@@ -1,0 +1,103 @@
+<% include partials/head.ejs %>
+
+<title>EMAPAVIGS - REPORTE MAPA</title>
+
+<body class="reporte-mapa">
+<div class="wrapper">
+
+    <div class="container">
+
+        <h3 class="page-title">EMAPAVIGS REPORTE- <span>MAPA</span></h3>
+        
+        <% if(usuario.tipo.trim()=='S'){ %>
+            <div id="map_wrapper">
+                <div id="map_canvas" class="mapping"></div>
+            </div>
+        <% } else { %>
+            <h2>Reporte no autorizado.</h2>
+        <% } %>
+        
+    </div>
+</div>
+
+
+<% include partials/footer %>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        // Asynchronously Load the map API
+        var script = document.createElement('script');
+        script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyBEYJxlaBDwhCWPr_vQxkTRWx70w79P-tk&callback=initialize";
+        document.body.appendChild(script);
+    });
+
+    function initialize() {
+        var map;
+        var x = "";
+        var Y = "";
+        var bounds = new google.maps.LatLngBounds();
+        var mapOptions = {
+            mapTypeId: 'roadmap'
+        };
+
+        // Display a map on the page
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        map.setTilt(45);
+
+
+
+
+        // Multiple Markers
+        var markers = [
+
+            <% puntos.forEach(function(punto){  %>
+
+                    ['<%= punto.codencuestador%>', <%= punto.coordenada_x%>,<%= punto.coordenada_y%>,'<%= punto.color%>'],
+
+            <% }) %>
+
+        ];
+
+        // Info Window Content
+        var infoWindowContent = [
+            <% puntos.forEach(function(punto){  %>
+
+                    ['<div class="info_content"><h3><%= punto.codencuestador %></h3><p><%= punto.coordenada_x %></p><p><%= punto.coordenada_y %></p></div>'],
+
+            <% }) %>
+        ];
+
+        // Display multiple markers on a map
+        var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+        // Loop through our array of markers & place each one on the map
+        for( i = 0; i < markers.length; i++ ) {
+            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0],
+                icon: 'http://www.googlemapsmarkers.com/v1/'+markers[i][3]+'/'
+            });
+
+            // Allow each marker to have an info window
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infoWindow.setContent(infoWindowContent[i][0]);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+            // Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+        }
+
+        // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+        var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+            this.setZoom(18);
+            google.maps.event.removeListener(boundsListener);
+        });
+
+    }
+</script>
